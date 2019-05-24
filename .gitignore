@@ -29,5 +29,19 @@ target/*
 /target/
 build/*
 /build/
+
+# ide config files
+.classpath
+.project
+mvnw
+mvnw.cmd
+
+/.idea/
+.idea/*
 /.idea/libraries/
 .idea/libraries/*
+/.mvn/
+.mvn/*
+/.settings/
+.settings/*
+
