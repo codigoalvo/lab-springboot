@@ -1,17 +1,22 @@
 package codigoalvo.lab.springboot.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
 @Table(name = "categoria")
 public class Categoria {
 
-    private Long id;
-    private String nome;
-
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Size(min = 3, max = 20)
+    private String nome;
+
     public Long getId() {
         return id;
     }
