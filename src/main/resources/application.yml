@@ -12,11 +12,21 @@ spring:
 ---
 
 spring:
-  profiles: devh2file
+  profiles: devh2mem
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:lab
+    datasource.username: sa
+    datasource.password:
+---
 
+spring:
+  profiles: devh2file
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://192.168.56.1:9095/file:~/lab
+    url: jdbc:h2:tcp://192.168.56.1:9095/file:~/lab;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1;
     username: sa
     password:
 ---
