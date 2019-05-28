@@ -36,27 +36,48 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        List<Erro> erros = criarListaDeErros(ex.getBindingResult());
+        List<Erro> erros = criarListaDeErros(ex.getBindingResult(), true);
         return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
     }
 
     private List<Erro> criarListaDeErros(BindingResult bindingResult) {
+        return criarListaDeErros(bindingResult, false);
+    }
+
+    private List<Erro> criarListaDeErros(BindingResult bindingResult, boolean incluirNomeCampo) {
         List<Erro> erros = new ArrayList<>();
         for (FieldError fieldError : bindingResult.getFieldErrors()) {
-            String msgUsuario = messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
-            erros.add(new Erro(msgUsuario, fieldError.toString()));
+            String msgCampo = incluirNomeCampo ? obterMsgNomeCampo(fieldError.getObjectName(), fieldError.getField()) : "";
+            String msgUsuario = msgCampo + messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
+            erros.add(new Erro(msgUsuario, fieldError.toString(), fieldError.getObjectName()+"."+fieldError.getField()));
         }
         return erros;
+    }
+
+    private String obterMsgNomeCampo(String nomeObjeto, String nomeCampo) {
+        try {
+            nomeCampo = messageSource.getMessage(nomeObjeto+"."+nomeCampo, null, LocaleContextHolder.getLocale());
+        } catch (Exception ex) {
+        }
+        nomeCampo += " : ";
+        return nomeCampo;
     }
 
     public static class Erro {
 
         private String mensagemUsuario;
         private String mensagemDesenvolvedor;
+        private String nomeCampo;
 
         public Erro(String mensagemUsuario, String mensagemDesenvolvedor) {
             this.mensagemUsuario = mensagemUsuario;
             this.mensagemDesenvolvedor = mensagemDesenvolvedor;
+        }
+
+        public Erro(String mensagemUsuario, String mensagemDesenvolvedor, String nomeCampo) {
+            this.mensagemUsuario = mensagemUsuario;
+            this.mensagemDesenvolvedor = mensagemDesenvolvedor;
+            this.nomeCampo = nomeCampo;
         }
 
         public String getMensagemUsuario() {
@@ -67,11 +88,14 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
             return mensagemDesenvolvedor;
         }
 
+        public String getNomeCampo() { return nomeCampo; }
+
         @Override
         public String toString() {
             return "Erro{" +
                     "mensagemUsuario='" + mensagemUsuario + '\'' +
                     ", mensagemDesenvolvedor='" + mensagemDesenvolvedor + '\'' +
+                    ", nomeCampo='" + nomeCampo + '\'' +
                     '}';
         }
     }
