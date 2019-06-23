@@ -46,4 +46,10 @@ public class CategoriaController implements BaseController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@DeleteMapping("/{codigo}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void removerCategoriaPorId(@PathVariable Long codigo) {
+		categoriaRepository.deleteById(codigo);
+	}
+
 }
