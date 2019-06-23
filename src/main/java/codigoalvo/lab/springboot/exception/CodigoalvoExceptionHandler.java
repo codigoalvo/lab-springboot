@@ -1,5 +1,6 @@
 package codigoalvo.lab.springboot.exception;
 
+import codigoalvo.lab.springboot.util.ErrorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -14,7 +15,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -31,11 +31,14 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 	private MessageSource messageSource;
 
 	@ExceptionHandler({EmptyResultDataAccessException.class})
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public ResponseEntity<Object> handleEmptyResultDataAccessException(Exception ex) {
-		String msgDesenvolvedor = "********** ERRO: " + (ex == null ? null : (ex.getMessage() == null ? null : ex.getMessage()));
-		log.error(msgDesenvolvedor);
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Erro("Recurso não encontrado para remoção!", msgDesenvolvedor));
+	//@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ResponseEntity<Object> handleEmptyResultDataAccessException(Exception ex, WebRequest request) {
+		String msgDesenvolvedor = ErrorUtil.getErrorMessage(ex);
+		String msgUsuario = messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale());
+		log.warn(msgUsuario + " - " + msgDesenvolvedor);
+		List<Erro> erros = Arrays.asList(new Erro(msgUsuario, msgDesenvolvedor));
+		//return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Erro(msgUsuario, msgDesenvolvedor));
+		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 
 	@Override
