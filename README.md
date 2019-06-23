@@ -6,7 +6,7 @@ API back-end para projeto de testes com spring-boot
 
 Ao rodar esse projeto com o Maven, você terá um serviço REST rodando localmente em 8080
 Para saber quais serviços estão disponíveis, depois de subir a aplicação,
-você pode acessar http://localhost:8080/swagger-ui.html
+você pode acessar http://localhost:8080/lab-springboot/swagger-ui.html
 
 ### Pré-requisitos
 
@@ -19,4 +19,4 @@ e em seguida `java -jar lab-springboot.jar` na pasta onde for gerado.
 ```
  Categoria 
 ```
-- [Listar Categorias](http://localhost:8080/categorias)
+- [Listar Categorias] (http://localhost:8080/lab-springboot/categorias)

@@ -1,5 +1,7 @@
 package codigoalvo.lab.springboot.util;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class ErrorUtil {
@@ -21,4 +23,9 @@ public class ErrorUtil {
 		}
 		return sb.toString();
 	}
+
+	public static List<Erro> singleErrorAsList(String msgUsuario, String msgDesenvolvedor) {
+		return Arrays.asList(new Erro(msgUsuario, msgDesenvolvedor));
+	}
+
 }

@@ -1,5 +1,6 @@
 package codigoalvo.lab.springboot.exception;
 
+import codigoalvo.lab.springboot.util.Erro;
 import codigoalvo.lab.springboot.util.ErrorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +31,13 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 	@Autowired
 	private MessageSource messageSource;
 
-	@ExceptionHandler({EmptyResultDataAccessException.class})
+	@ExceptionHandler({EmptyResultDataAccessException.class, ResourceNotFoundException.class})
 	//@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ResponseEntity<Object> handleEmptyResultDataAccessException(Exception ex, WebRequest request) {
 		String msgDesenvolvedor = ErrorUtil.getErrorMessage(ex);
 		String msgUsuario = messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale());
 		log.warn(msgUsuario + " - " + msgDesenvolvedor);
-		List<Erro> erros = Arrays.asList(new Erro(msgUsuario, msgDesenvolvedor));
+		List<Erro> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
 		//return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Erro(msgUsuario, msgDesenvolvedor));
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
@@ -45,7 +46,7 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		String msgUsuario = messageSource.getMessage("mensagem.requisicao-invalida", null, LocaleContextHolder.getLocale());
 		String msgDesenvolvedor = Objects.nonNull(ex.getRootCause()) ? ex.getRootCause().getMessage() : ex.getMessage();
-		List<Erro> erros = Arrays.asList(new Erro(msgUsuario, msgDesenvolvedor));
+		List<Erro> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 
 	}
@@ -56,9 +57,7 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
 
-	private List<Erro> criarListaDeErros(BindingResult bindingResult) {
-		return criarListaDeErros(bindingResult, false);
-	}
+
 
 	private List<Erro> criarListaDeErros(BindingResult bindingResult, boolean incluirNomeCampo) {
 		List<Erro> erros = new ArrayList<>();
@@ -79,42 +78,4 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 		return nomeCampo;
 	}
 
-	public static class Erro {
-
-		private String mensagemUsuario;
-		private String mensagemDesenvolvedor;
-		private String nomeCampo;
-
-		public Erro(String mensagemUsuario, String mensagemDesenvolvedor) {
-			this.mensagemUsuario = mensagemUsuario;
-			this.mensagemDesenvolvedor = mensagemDesenvolvedor;
-		}
-
-		public Erro(String mensagemUsuario, String mensagemDesenvolvedor, String nomeCampo) {
-			this.mensagemUsuario = mensagemUsuario;
-			this.mensagemDesenvolvedor = mensagemDesenvolvedor;
-			this.nomeCampo = nomeCampo;
-		}
-
-		public String getMensagemUsuario() {
-			return mensagemUsuario;
-		}
-
-		public String getMensagemDesenvolvedor() {
-			return mensagemDesenvolvedor;
-		}
-
-		public String getNomeCampo() {
-			return nomeCampo;
-		}
-
-		@Override
-		public String toString() {
-			return "Erro{" +
-					"mensagemUsuario='" + mensagemUsuario + '\'' +
-					", mensagemDesenvolvedor='" + mensagemDesenvolvedor + '\'' +
-					", nomeCampo='" + nomeCampo + '\'' +
-					'}';
-		}
-	}
 }
