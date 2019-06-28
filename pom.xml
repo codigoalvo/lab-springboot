@@ -10,12 +10,16 @@
 	</parent>
 	<groupId>codigoalvo</groupId>
 	<artifactId>lab-springboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>lab-springboot</name>
 	<description>Projeto de Estudo e Testes com Spring Boot</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<spring-security-oauth2.version>2.3.6.RELEASE</spring-security-oauth2.version>
+		<spring-security-jwt.version>1.0.10.RELEASE</spring-security-jwt.version>
 	</properties>
 
 	<dependencies>
@@ -47,7 +51,13 @@
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
-			<version>2.3.4.RELEASE</version>
+			<version>${spring-security-oauth2.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			<version>${spring-security-jwt.version}</version>
 		</dependency>
 
 
