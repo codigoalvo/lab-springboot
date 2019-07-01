@@ -1,23 +1,34 @@
 {
 	"info": {
-		"_postman_id": "fbf1006a-85a5-4ce3-8d67-5774f45619a8",
+		"_postman_id": "ffcb2042-e1ee-4302-801d-7141ef8e606b",
 		"name": "lab-springboot",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "categorias listar",
+			"name": "categorias-listar",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "48ea7a21-91bc-4a44-91b3-e6740e9ae224",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/categorias",
+					"raw": "http://localhost:8080/lab-springboot/categorias",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"lab-springboot",
 						"categorias"
 					]
 				}
@@ -25,9 +36,81 @@
 			"response": []
 		},
 		{
-			"name": "categoria adicionar",
+			"name": "categorias-buscar-por-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/lab-springboot/categorias/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lab-springboot",
+						"categorias",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categorias-remover",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/lab-springboot/categorias/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lab-springboot",
+						"categorias",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categorias-gravar",
 			"request": {
 				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Tarifas\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/lab-springboot/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lab-springboot",
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categorias-atualizar",
+			"request": {
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -37,37 +120,87 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\" : \"Tarifas\"\n}"
+					"raw": "{\n    \"nome\": \"Diversos\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/categorias",
+					"raw": "http://localhost:8080/lab-springboot/categorias/15",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"categorias"
+						"lab-springboot",
+						"categorias",
+						"15"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "categoria buscar por id",
+			"name": "oauth2 get token",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "c0dig0@Lv0",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "angular",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client",
+							"value": "angular",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "cassio.amaral",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "amaral1978",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "http://localhost:8080/categorias/2",
+					"raw": "http://localhost:8080/lab-springboot/oauth/token",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"categorias",
-						"2"
+						"lab-springboot",
+						"oauth",
+						"token"
 					]
 				}
 			},
