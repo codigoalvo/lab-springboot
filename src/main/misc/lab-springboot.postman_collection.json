@@ -175,12 +175,12 @@
 						},
 						{
 							"key": "username",
-							"value": "cassio.amaral",
+							"value": "admin@email.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "amaral1978",
+							"value": "admin123",
 							"type": "text"
 						},
 						{
@@ -202,6 +202,17 @@
 						"oauth",
 						"token"
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
 				}
 			},
 			"response": []
