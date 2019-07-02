@@ -21,9 +21,10 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		String bCryptSecret = "$2a$10$ygagNzsQUV2L6CE4pd4X.uFNqLaQI0vrs9qzKGPiCeG15TE.GFXxS"; //"c0dig0@Lv0"
 		clients.inMemory()
 				.withClient("angular")
-				.secret("{noop}c0dig0@Lv0")
+				.secret(bCryptSecret)
 				.authorizedGrantTypes("refresh_token", "password", "client_credentials")
 				.scopes("webclient", "mobileclient")
 				.accessTokenValiditySeconds(120)
