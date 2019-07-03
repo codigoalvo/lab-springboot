@@ -9,6 +9,16 @@ spring:
 ---
 
 spring:
+  profiles: devh2memtcp
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:tcp://localhost:9095/mem:lab
+    datasource.username: sa
+    datasource.password:
+---
+
+spring:
   profiles: devh2file
   jpa.database-platform: org.hibernate.dialect.H2Dialect
   datasource:
@@ -20,10 +30,8 @@ spring:
 
 spring:
   profiles: devhpsql
-
   jpa:
     database: PostgreSQL
-
   datasource:
     url: jdbc:postgresql://localhost:5432/desenv?createDatabaseIfNotExist=true&useSSL=false
     username: postgres

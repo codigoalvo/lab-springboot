@@ -5,32 +5,21 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 @Data
-public class CustomUserDetails implements UserDetails {
-
-	private static final String ROLES = "ADMIN;USER";
+public class UserDetailsAdapter implements UserDetails {
 
 	private Usuario usuario;
 
-	public CustomUserDetails(Usuario usuario) {
+	public UserDetailsAdapter(Usuario usuario) {
 		this.usuario = usuario == null ? new Usuario() : usuario;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> roles = new ArrayList<>();
-		Arrays.asList(ROLES.split(";")).forEach(e -> roles.add(new GrantedAuthority() {
-			@Override
-			public String getAuthority() {
-				return e;
-			}
-		}));
-		return roles;
+		return Arrays.asList(new GrantedAuthorityAdapter(usuario.getPerfil()));
 	}
 
 	@Override

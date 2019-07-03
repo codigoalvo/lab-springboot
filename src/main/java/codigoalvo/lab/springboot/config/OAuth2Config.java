@@ -37,4 +37,5 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 				.authenticationManager(authenticationManager)
 				.userDetailsService(userDetailsService);
 	}
+
 }

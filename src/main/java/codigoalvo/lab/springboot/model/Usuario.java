@@ -1,9 +1,9 @@
 package codigoalvo.lab.springboot.model;
 
+import codigoalvo.lab.springboot.type.TipoPerfil;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,5 +27,8 @@ public class Usuario {
 	@NotNull
 	@Size(min = 3, max = 100)
 	private String senha;
+
+	@NotNull
+	private TipoPerfil perfil;
 
 }

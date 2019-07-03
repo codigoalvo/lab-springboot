@@ -1,5 +1,6 @@
 package codigoalvo.lab.springboot.util;
 
+import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,9 +20,16 @@ public class StringHelper {
 	private static final String TEST_MSG_PREFIX = "__TEST__ ";
 
 	public static String toJson(Object object) {
+		return toJson(object, null);
+	}
+
+	public static String toJson(Object object, Module module) {
 		try {
-			ObjectMapper Obj = new ObjectMapper();
-			return Obj.writeValueAsString(object);
+			ObjectMapper mapper = new ObjectMapper();
+			if (module != null) {
+				mapper.registerModule(module);
+			}
+			return mapper.writeValueAsString(object);
 		} catch (IOException e) {
 			e.printStackTrace();
 			return Objects.toString(object);
