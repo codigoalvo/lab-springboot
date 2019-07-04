@@ -33,8 +33,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		resources.stateless(true);
 	}
 
+	// TODO: Verificar a importância deste codigo comentado abaixo antes de remover definitivamente
+	/*/
 	@Bean
 	public MethodSecurityExpressionHandler createExpressionHandler() {
 		return new OAuth2MethodSecurityExpressionHandler();
 	}
+	//*/
 }

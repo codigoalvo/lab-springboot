@@ -13,7 +13,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "48ea7a21-91bc-4a44-91b3-e6740e9ae224",
+							"value": "e79d4691-9339-467e-817a-b5fcddec3816",
 							"type": "string"
 						}
 					]
@@ -21,14 +21,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/lab-springboot/categorias",
-					"protocol": "http",
+					"raw": "{{hostname}}{{port}}{{context}}/categorias",
 					"host": [
-						"localhost"
+						"{{hostname}}{{port}}{{context}}"
 					],
-					"port": "8080",
 					"path": [
-						"lab-springboot",
 						"categorias"
 					]
 				}
@@ -38,19 +35,26 @@
 		{
 			"name": "categorias-buscar-por-id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8d480211-3644-435f-be99-2f0cf9052bce",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/lab-springboot/categorias/15",
-					"protocol": "http",
+					"raw": "{{hostname}}{{port}}{{context}}/categorias/2",
 					"host": [
-						"localhost"
+						"{{hostname}}{{port}}{{context}}"
 					],
-					"port": "8080",
 					"path": [
-						"lab-springboot",
 						"categorias",
-						"15"
+						"2"
 					]
 				}
 			},
@@ -62,14 +66,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/lab-springboot/categorias/6",
-					"protocol": "http",
+					"raw": "{{hostname}}{{port}}{{context}}/categorias/6",
 					"host": [
-						"localhost"
+						"{{hostname}}{{port}}{{context}}"
 					],
-					"port": "8080",
 					"path": [
-						"lab-springboot",
 						"categorias",
 						"6"
 					]
@@ -93,14 +94,11 @@
 					"raw": "{\n    \"nome\": \"Tarifas\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/lab-springboot/categorias",
-					"protocol": "http",
+					"raw": "{{hostname}}{{port}}{{context}}/categorias",
 					"host": [
-						"localhost"
+						"{{hostname}}{{port}}{{context}}"
 					],
-					"port": "8080",
 					"path": [
-						"lab-springboot",
 						"categorias"
 					]
 				}
@@ -123,14 +121,11 @@
 					"raw": "{\n    \"nome\": \"Diversos\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/lab-springboot/categorias/15",
-					"protocol": "http",
+					"raw": "{{hostname}}{{port}}{{context}}/categorias/15",
 					"host": [
-						"localhost"
+						"{{hostname}}{{port}}{{context}}"
 					],
-					"port": "8080",
 					"path": [
-						"lab-springboot",
 						"categorias",
 						"15"
 					]
@@ -191,14 +186,71 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/lab-springboot/oauth/token",
-					"protocol": "http",
+					"raw": "{{hostname}}{{port}}{{context}}/oauth/token",
 					"host": [
-						"localhost"
+						"{{hostname}}{{port}}{{context}}"
 					],
-					"port": "8080",
 					"path": [
-						"lab-springboot",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth2 refresh token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "c0dig0@Lv0",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "angular",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client",
+							"value": "angular",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "59431372-e385-4ed6-81af-2c2ec634366b",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}{{port}}{{context}}/oauth/token",
+					"host": [
+						"{{hostname}}{{port}}{{context}}"
+					],
+					"path": [
 						"oauth",
 						"token"
 					]
@@ -209,10 +261,26 @@
 		{
 			"name": "user",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7c4a131c-1dab-4a43-bac9-aacfd9f45efd",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{hostname}}{{port}}{{context}}/user",
+					"host": [
+						"{{hostname}}{{port}}{{context}}"
+					],
+					"path": [
+						"user"
+					]
 				}
 			},
 			"response": []

@@ -25,9 +25,10 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 		clients.inMemory()
 				.withClient("angular")
 				.secret(bCryptSecret)
-				.authorizedGrantTypes("refresh_token", "password", "client_credentials")
-				.scopes("webclient", "mobileclient")
-				.accessTokenValiditySeconds(120)
+				.authorizedGrantTypes("refresh_token", "password")
+				.scopes("read", "write")
+				.accessTokenValiditySeconds(60 * 5)
+				.refreshTokenValiditySeconds(60 * 60 * 4)
 		;
 	}
 
@@ -35,7 +36,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints
 				.authenticationManager(authenticationManager)
-				.userDetailsService(userDetailsService);
+				.userDetailsService(userDetailsService)
+				//.reuseRefreshTokens(false)
+		;
 	}
 
 }

@@ -9,7 +9,7 @@ spring:
 ---
 
 spring:
-  profiles: devh2memtcp
+  profiles: devh2memtcp   #Precisa estar rodando o H2 como serviço TCP
   jpa.database-platform: org.hibernate.dialect.H2Dialect
   datasource:
     driverClassName: org.h2.Driver
@@ -19,7 +19,7 @@ spring:
 ---
 
 spring:
-  profiles: devh2file
+  profiles: devh2file   #Precisa estar rodando o H2 como serviço TCP
   jpa.database-platform: org.hibernate.dialect.H2Dialect
   datasource:
     driver-class-name: org.h2.Driver

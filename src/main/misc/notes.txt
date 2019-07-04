@@ -3,3 +3,6 @@ URLs com exemplo para README.md
 * https://gist.githubusercontent.com/PurpleBooth/109311bb0361f32d87a2/raw/8254b53ab8dcb18afc64287aaddd9e5b6059f880/README-Template.md
 * https://github.com/swagger-api/swagger-ui/blob/master/README.md
 * https://raw.githubusercontent.com/swagger-api/swagger-ui/master/README.md
+* https://www.baeldung.com/jackson-deserialization
+* https://www.baeldung.com/jackson-deserialization
+* https://thepracticaldeveloper.com/2018/07/31/java-and-json-jackson-serialization-with-objectmapper/
