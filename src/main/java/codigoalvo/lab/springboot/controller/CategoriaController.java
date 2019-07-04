@@ -53,7 +53,6 @@ public class CategoriaController implements BaseController {
 		categoriaRepository.deleteById(codigo);
 	}
 
-
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Categoria> alterarCategoriaComId(@PathVariable Long codigo, @Valid @RequestBody Categoria categoria, HttpServletResponse response) {
 		Optional<Categoria> optCategoria = categoriaRepository.findById(codigo);

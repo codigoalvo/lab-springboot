@@ -20,7 +20,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,7 +37,6 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 		String msgUsuario = messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale());
 		log.warn(msgUsuario + " - " + msgDesenvolvedor);
 		List<Erro> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
-		//return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Erro(msgUsuario, msgDesenvolvedor));
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 
@@ -48,7 +46,6 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 		String msgDesenvolvedor = Objects.nonNull(ex.getRootCause()) ? ex.getRootCause().getMessage() : ex.getMessage();
 		List<Erro> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
-
 	}
 
 	@Override
@@ -56,7 +53,6 @@ public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
 		List<Erro> erros = criarListaDeErros(ex.getBindingResult(), true);
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
-
 
 
 	private List<Erro> criarListaDeErros(BindingResult bindingResult, boolean incluirNomeCampo) {

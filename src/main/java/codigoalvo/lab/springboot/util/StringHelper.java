@@ -160,14 +160,6 @@ public class StringHelper {
 		}
 	}
 
-	public BigDecimal toBigDecimal(String flatStrNumber) {
-		return toBigDecimal(flatStrNumber, 2);
-	}
-
-	public BigDecimal toBigDecimal(String flatStrNumber, int decimalDigits) {
-		return toBigDecimal(flatStrNumber, decimalDigits, false);
-	}
-
 	public static String getErrorMessage(Throwable ex) {
 		return getErrorMessage(ex, null);
 	}
@@ -184,13 +176,21 @@ public class StringHelper {
 			sb.append(ex.getMessage());
 		}
 		if (ex.getCause() != null) {
-			System.err.println("Exception Cause: "+Objects.toString(ex.getCause()));
+			System.err.println("Exception Cause: " + Objects.toString(ex.getCause()));
 			if (!sb.toString().trim().isEmpty()) {
 				sb.append(" ; Cause: ");
 			}
 			sb.append(ex.getCause());
 		}
 		return sb.toString();
+	}
+
+	public BigDecimal toBigDecimal(String flatStrNumber) {
+		return toBigDecimal(flatStrNumber, 2);
+	}
+
+	public BigDecimal toBigDecimal(String flatStrNumber, int decimalDigits) {
+		return toBigDecimal(flatStrNumber, decimalDigits, false);
 	}
 
 }

@@ -1,6 +1,5 @@
 package codigoalvo.lab.springboot.type;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,6 +27,11 @@ public enum TipoPerfil implements Tipo<TipoPerfil, String, String> {
 		this.value = value;
 	}
 
+	@JsonIgnore
+	public static TipoPerfil staticGetByKey(String key) {
+		return INDEFINIDO.getByKey(key);
+	}
+
 	@Override
 	public String getKey() {
 		return this.key;
@@ -48,11 +52,6 @@ public enum TipoPerfil implements Tipo<TipoPerfil, String, String> {
 	@Override
 	public TipoPerfil getDefault() {
 		return null;
-	}
-
-	@JsonIgnore
-	public static TipoPerfil staticGetByKey(String key) {
-		return INDEFINIDO.getByKey(key);
 	}
 
 }

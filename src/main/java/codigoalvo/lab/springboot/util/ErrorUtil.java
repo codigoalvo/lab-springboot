@@ -15,7 +15,7 @@ public class ErrorUtil {
 			sb.append(ex.getMessage());
 		}
 		if (ex.getCause() != null) {
-			System.err.println("Exception Cause: "+Objects.toString(ex.getCause()));
+			System.err.println("Exception Cause: " + Objects.toString(ex.getCause()));
 			if (!sb.toString().trim().isEmpty()) {
 				sb.append(" ; Cause: ");
 			}
