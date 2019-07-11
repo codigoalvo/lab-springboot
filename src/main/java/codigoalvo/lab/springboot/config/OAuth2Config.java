@@ -31,8 +31,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 				.secret(bCryptSecret)
 				.authorizedGrantTypes("refresh_token", "password")
 				.scopes("read", "write")
-				.accessTokenValiditySeconds(60 * 5)
-				.refreshTokenValiditySeconds(60 * 60 * 4)
+				.accessTokenValiditySeconds(60 * 30) //30 minutos
+				.refreshTokenValiditySeconds(60 * 60 * 8) // 8 horas
 		;
 	}
 
@@ -40,7 +40,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints
 				.authenticationManager(authenticationManager)
-				.userDetailsService(userDetailsService)
+				//.userDetailsService(userDetailsService) //TODO: Ver se remover isso causará algum problema.
 				//.reuseRefreshTokens(false)
 		;
 	}
