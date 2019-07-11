@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,19 +27,13 @@ public class CategoriaController implements BaseController {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('CATEGORIA_CONSULTAR') and #oauth2.hasScope('read')")
 	public List<Categoria> listarCategorias() {
 		return categoriaRepository.findAll();
 	}
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Categoria> criarCategoria(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
-		Categoria categoriaSalva = categoriaRepository.save(categoria);
-		publisher.publishEvent(new RecursoCriadoEvento(this, response, categoria.getId()));
-		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
-	}
-
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('CATEGORIA_CONSULTAR') and #oauth2.hasScope('read')")
 	public ResponseEntity<Categoria> buscarCategoriaPorId(@PathVariable Long id) {
 		Optional<Categoria> optCategoria = categoriaRepository.findById(id);
 		if (optCategoria.isPresent()) {
@@ -47,13 +42,24 @@ public class CategoriaController implements BaseController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("hasAuthority('CATEGORIA_ALTERAR') and #oauth2.hasScope('write')")
+	public ResponseEntity<Categoria> criarCategoria(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
+		Categoria categoriaSalva = categoriaRepository.save(categoria);
+		publisher.publishEvent(new RecursoCriadoEvento(this, response, categoria.getId()));
+		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
+	}
+
 	@DeleteMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('CATEGORIA_ALTERAR') and #oauth2.hasScope('write')")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void removerCategoriaComId(@PathVariable Long codigo) {
 		categoriaRepository.deleteById(codigo);
 	}
 
 	@PutMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('CATEGORIA_ALTERAR') and #oauth2.hasScope('write')")
 	public ResponseEntity<Categoria> alterarCategoriaComId(@PathVariable Long codigo, @Valid @RequestBody Categoria categoria, HttpServletResponse response) {
 		Optional<Categoria> optCategoria = categoriaRepository.findById(codigo);
 		if (optCategoria.isPresent()) {

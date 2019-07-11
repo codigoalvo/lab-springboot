@@ -1,19 +1,21 @@
 package codigoalvo.lab.springboot.security;
 
+import codigoalvo.lab.springboot.model.Perfil;
+import codigoalvo.lab.springboot.model.Permissao;
 import codigoalvo.lab.springboot.type.TipoPerfil;
 import org.springframework.security.core.GrantedAuthority;
 
 public class GrantedAuthorityAdapter implements GrantedAuthority {
 
-	private TipoPerfil perfil;
+	private Permissao permissao;
 
-	public GrantedAuthorityAdapter(TipoPerfil perfil) {
-		this.perfil = perfil;
+	public GrantedAuthorityAdapter(Permissao permissao) {
+		this.permissao = permissao;
 	}
 
 	@Override
 	public String getAuthority() {
-		return this.perfil == null ? "" : this.perfil.getKey();
+		return this.permissao == null ? "" : this.permissao.getPermissao();
 	}
 
 }

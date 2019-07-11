@@ -13,8 +13,8 @@ public class OAuthConfigTest {
 
 	@Test
 	public void testarSecretCrypt() {
-		String original = "c0dig0@Lv0";
-		String esperado = "$2a$10$ygagNzsQUV2L6CE4pd4X.uFNqLaQI0vrs9qzKGPiCeG15TE.GFXxS";
+		String original = "@nGuL4r";
+		String esperado = "$2a$10$MSPnuhpv0mkLMnbT5v/fH.JKqZmwTxsY9J7T4wHMDtPnyz./.WO8.";
 		String resultado = new BCryptPasswordEncoder().encode(original);
 		String message = ErrorUtil.getTestMessage(OAuthConfigTest.class, esperado, resultado, false);
 		boolean acerto = new BCryptPasswordEncoder().matches(original, resultado);

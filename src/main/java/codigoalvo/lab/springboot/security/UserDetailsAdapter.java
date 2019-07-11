@@ -5,8 +5,7 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 @Data
 public class UserDetailsAdapter implements UserDetails {
@@ -19,7 +18,12 @@ public class UserDetailsAdapter implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(new GrantedAuthorityAdapter(usuario.getPerfil()));
+		if (usuario.getPerfil() == null || usuario.getPerfil().getPermissoes() == null) {
+			return null;
+		}
+		List<GrantedAuthorityAdapter> authorities = new ArrayList<>();
+		usuario.getPerfil().getPermissoes().forEach(p -> authorities.add(new GrantedAuthorityAdapter(p)));
+		return authorities;
 	}
 
 	@Override

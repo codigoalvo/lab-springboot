@@ -13,7 +13,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "e79d4691-9339-467e-817a-b5fcddec3816",
+							"value": "fcc55782-b88f-4b73-9590-456ae6d44ce5",
 							"type": "string"
 						}
 					]
@@ -81,6 +81,16 @@
 		{
 			"name": "categorias-gravar",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "fcc55782-b88f-4b73-9590-456ae6d44ce5",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -141,7 +151,7 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "c0dig0@Lv0",
+							"value": "@nGuL4r",
 							"type": "string"
 						},
 						{
@@ -166,7 +176,8 @@
 						{
 							"key": "client",
 							"value": "angular",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "username",
@@ -206,7 +217,7 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "c0dig0@Lv0",
+							"value": "@nGuL4r",
 							"type": "string"
 						},
 						{
@@ -229,19 +240,15 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "client",
-							"value": "angular",
-							"type": "text"
-						},
-						{
 							"key": "grant_type",
 							"value": "refresh_token",
 							"type": "text"
 						},
 						{
 							"key": "refresh_token",
-							"value": "59431372-e385-4ed6-81af-2c2ec634366b",
-							"type": "text"
+							"value": "4f6e66df-74eb-4932-9faa-67ab4dba0ace",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
@@ -266,7 +273,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "7c4a131c-1dab-4a43-bac9-aacfd9f45efd",
+							"value": "fcc55782-b88f-4b73-9590-456ae6d44ce5",
 							"type": "string"
 						}
 					]

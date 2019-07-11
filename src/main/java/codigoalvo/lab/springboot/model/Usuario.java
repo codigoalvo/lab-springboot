@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -28,7 +29,20 @@ public class Usuario {
 	@Size(min = 3, max = 100)
 	private String senha;
 
-	@NotNull
-	private TipoPerfil perfil;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_perfil", foreignKey = @ForeignKey(name = "perfil_fk"))
+	private Perfil perfil;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Usuario usuario = (Usuario) o;
+		return Objects.equals(id, usuario.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 }
