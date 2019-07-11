@@ -16,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
@@ -30,9 +31,11 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 		HttpServletRequest req = ((ServletServerHttpRequest)request).getServletRequest();
 		HttpServletResponse resp = ((ServletServerHttpResponse)response).getServletResponse();
 		DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken)body;
-		String refreshToken = body.getRefreshToken().getValue();
-		adicionarRefreshTokenAoCookie(refreshToken, req, resp);
-		removerRefreshTokenDoBody(token);
+		if (Objects.nonNull(body.getRefreshToken())) {
+			String refreshToken = body.getRefreshToken().getValue();
+			adicionarRefreshTokenAoCookie(refreshToken, req, resp);
+			removerRefreshTokenDoBody(token);
+		}
 		return body;
 	}
 

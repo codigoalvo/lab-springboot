@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LabSpringbootApplicationTests {
+public class StartApplicationTests {
 
 	private static final boolean LOG_MSGS = true;
 
@@ -33,7 +33,7 @@ public class LabSpringbootApplicationTests {
 		String esperado = "{\"key\":\"U\",\"value\":\"Usuário\"}";
 		Module module = config.customEntitySerializerDeserializer();
 		String resultado = JsonUtil.toJson(TipoPerfil.USUARIO, module);
-		String message = ErrorUtil.getTestMessage(LabSpringbootApplicationTests.class, esperado, resultado, LOG_MSGS);
+		String message = ErrorUtil.getTestMessage(StartApplicationTests.class, esperado, resultado, LOG_MSGS);
 		assertEquals(message, esperado, resultado);
 	}
 
@@ -46,7 +46,7 @@ public class LabSpringbootApplicationTests {
 		TipoPerfil perfil = mapper.readValue(tipoStr, TipoPerfil.class);
 		String esperado = Objects.toString(TipoPerfil.USUARIO);
 		String resultado = Objects.toString(perfil);
-		String message = ErrorUtil.getTestMessage(LabSpringbootApplicationTests.class, esperado, resultado, LOG_MSGS);
+		String message = ErrorUtil.getTestMessage(StartApplicationTests.class, esperado, resultado, LOG_MSGS);
 		assertEquals(message, esperado, resultado);
 	}
 

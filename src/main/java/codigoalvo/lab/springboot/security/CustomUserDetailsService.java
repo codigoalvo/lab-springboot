@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -18,9 +20,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-		Usuario usuario = usuarioRepository.findFirstByEmail(userEmail);
-		UserDetailsAdapter response = new UserDetailsAdapter(usuario);
-		log.debug("************* Usuario: " + usuario + "UserDetailsAdapter: " + response);
+		Optional<Usuario> usuarioOpt = usuarioRepository.findFirstByEmail(userEmail);
+		Usuario usuario = usuarioOpt.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha inválido(s)"));
+		log.debug("************* Usuario: " + usuario + "UserDetailsAdapter: " + usuario);
+		UserDetailsAdapter response = new UserDetailsAdapter(usuarioOpt.get());
 		return response;
 	}
 
