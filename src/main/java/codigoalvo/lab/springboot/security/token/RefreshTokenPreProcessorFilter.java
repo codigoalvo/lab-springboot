@@ -18,10 +18,8 @@ public class RefreshTokenPreProcessorFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest)request;
-		if (req.getRequestURI().contains("oauth/token")
-				&&  "refresh_token".equalsIgnoreCase(req.getParameter("grant_type"))
-				&&  req.getCookies() != null ) {
+		HttpServletRequest req = (HttpServletRequest) request;
+		if (isOAuthGrantTypeRefreshToken(req)) {
 			for (Cookie cookie : req.getCookies()) {
 				if ("refreshToken".equalsIgnoreCase(cookie.getName())) {
 					String refreshToken = cookie.getValue();
@@ -31,6 +29,14 @@ public class RefreshTokenPreProcessorFilter implements Filter {
 			}
 		}
 		chain.doFilter(req, response);
+	}
+
+	private boolean isOAuthGrantTypeRefreshToken(HttpServletRequest req) {
+		return req != null && req.getRequestURI() != null
+				&& req.getCookies() != null
+				&& req.getRequestURI().contains("oauth/token")
+				&& "refresh_token".equalsIgnoreCase(req.getParameter("grant_type"))
+				;
 	}
 
 	static class MyServletRequestWrapper extends HttpServletRequestWrapper {
