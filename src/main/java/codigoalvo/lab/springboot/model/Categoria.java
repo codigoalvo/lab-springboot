@@ -10,7 +10,7 @@ import java.util.Objects;
 @Data
 @Entity
 @Table(name = "categoria")
-public class Categoria {
+public class Categoria implements Model {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +25,12 @@ public class Categoria {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Categoria categoria = (Categoria) o;
-		return id.equals(categoria.id);
+		return getId().equals(categoria.getId());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(getId());
 	}
 
 }

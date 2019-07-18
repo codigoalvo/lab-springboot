@@ -1,5 +1,6 @@
-package codigoalvo.lab.springboot.controller;
+package codigoalvo.lab.springboot.security.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -14,12 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @EnableResourceServer
 public class OAuth2Controller {
 
 	@DeleteMapping("/revoke")
 	public void revoke(HttpServletRequest req, HttpServletResponse resp) {
+		log.debug("DELETE /revoke");
 		Cookie cookie = new Cookie("refreshToken", null);
 		cookie.setHttpOnly(true);
 		cookie.setSecure(false); // TODO: Em producao sera true
@@ -31,6 +34,7 @@ public class OAuth2Controller {
 
 	@RequestMapping(value = {"/user"}, produces = "application/json")
 	public Map<String, Object> user(OAuth2Authentication user) {
+		log.info("GET /user -> "+user);
 		Map<String, Object> userInfo = new HashMap<>();
 		userInfo.put("user", user.getUserAuthentication().getPrincipal());
 		userInfo.put("authorities", AuthorityUtils.authorityListToSet(user.getUserAuthentication().getAuthorities()));

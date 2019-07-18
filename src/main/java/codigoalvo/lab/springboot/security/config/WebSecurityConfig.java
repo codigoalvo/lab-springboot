@@ -1,6 +1,6 @@
-package codigoalvo.lab.springboot.config;
+package codigoalvo.lab.springboot.security.config;
 
-import codigoalvo.lab.springboot.security.CustomUserDetailsService;
+import codigoalvo.lab.springboot.security.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

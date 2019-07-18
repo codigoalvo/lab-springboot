@@ -1,5 +1,6 @@
-package codigoalvo.lab.springboot.type;
+package codigoalvo.lab.springboot.security.type;
 
+import codigoalvo.lab.springboot.type.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public enum TipoPerfil implements Tipo<TipoPerfil, String, String> {
 
 	@JsonIgnore
-	INDEFINIDO("I", "Indefinido"), USUARIO("U", "Usuário"), ADMIN("A", "Administrador");
+	INDEFINIDO("IDF", "Indefinido"), USUARIO("USU", "Usuário"), ADMIN("ADM", "Administrador");
 
 	@JsonIgnore
 	public static final TipoPerfil[] LST = {USUARIO, ADMIN};

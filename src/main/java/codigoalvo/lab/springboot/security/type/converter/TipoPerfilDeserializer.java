@@ -1,6 +1,6 @@
-package codigoalvo.lab.springboot.type.converter;
+package codigoalvo.lab.springboot.security.type.converter;
 
-import codigoalvo.lab.springboot.type.TipoPerfil;
+import codigoalvo.lab.springboot.security.type.TipoPerfil;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;

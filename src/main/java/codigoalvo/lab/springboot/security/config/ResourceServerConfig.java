@@ -1,4 +1,4 @@
-package codigoalvo.lab.springboot.config;
+package codigoalvo.lab.springboot.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

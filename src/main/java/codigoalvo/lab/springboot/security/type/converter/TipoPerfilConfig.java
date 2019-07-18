@@ -1,17 +1,13 @@
-package codigoalvo.lab.springboot.config;
+package codigoalvo.lab.springboot.security.type.converter;
 
-import codigoalvo.lab.springboot.type.TipoPerfil;
-import codigoalvo.lab.springboot.type.converter.TipoPerfilDeserializer;
-import codigoalvo.lab.springboot.type.converter.TipoPerfilSerializer;
+import codigoalvo.lab.springboot.security.type.TipoPerfil;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
-@Configuration
-public class LabSpringbootConfig {
+public class TipoPerfilConfig {
 
 	@Bean
 	public Module customEntitySerializerDeserializer() {

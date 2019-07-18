@@ -1,39 +1,38 @@
-package codigoalvo.lab.springboot.security;
+package codigoalvo.lab.springboot.security.adapter;
 
-import codigoalvo.lab.springboot.model.Usuario;
+import codigoalvo.lab.springboot.security.model.SecurityUser;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Data
 public class UserDetailsAdapter implements UserDetails {
 
-	private Usuario usuario;
+	private SecurityUser securityUser;
 
-	public UserDetailsAdapter(Usuario usuario) {
-		this.usuario = usuario == null ? new Usuario() : usuario;
+	public UserDetailsAdapter(SecurityUser securityUser) {
+		this.securityUser = securityUser == null ? new SecurityUser() : securityUser;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		if (usuario.getPerfil() == null || usuario.getPerfil().getPermissoes() == null) {
-			return null;
-		}
-		List<GrantedAuthorityAdapter> authorities = new ArrayList<>();
-		usuario.getPerfil().getPermissoes().forEach(p -> authorities.add(new GrantedAuthorityAdapter(p)));
+		final List<GrantedAuthorityAdapter> authorities = new ArrayList<>();
+		securityUser.getProfiles().forEach(p -> p.getAuthorities().forEach(a -> authorities.add(new GrantedAuthorityAdapter(a))));
 		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-		return this.usuario == null ? null : usuario.getSenha();
+		return this.securityUser == null ? null : securityUser.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.usuario == null ? null : usuario.getEmail();
+		return this.securityUser == null ? null : securityUser.getLogin();
 	}
 
 	@Override
@@ -57,7 +56,7 @@ public class UserDetailsAdapter implements UserDetails {
 	}
 
 	private boolean isValid() {
-		return this.usuario == null ? false : true;
+		return this.securityUser != null;
 	}
 
 }

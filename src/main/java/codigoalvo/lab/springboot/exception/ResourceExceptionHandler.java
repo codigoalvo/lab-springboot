@@ -25,7 +25,7 @@ import java.util.Objects;
 
 @Slf4j
 @ControllerAdvice
-public class CodigoalvoExceptionHandler extends ResponseEntityExceptionHandler {
+public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@Autowired
 	private MessageSource messageSource;

@@ -1,4 +1,4 @@
-package codigoalvo.lab.springboot.config;
+package codigoalvo.lab.springboot.security.config;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
