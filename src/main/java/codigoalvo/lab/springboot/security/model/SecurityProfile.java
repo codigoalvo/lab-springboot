@@ -1,11 +1,8 @@
 package codigoalvo.lab.springboot.security.model;
 
-import codigoalvo.lab.springboot.security.type.TipoPerfil;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +15,7 @@ public class SecurityProfile {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private TipoPerfil name;
+	private String name;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "security_profile_authority"

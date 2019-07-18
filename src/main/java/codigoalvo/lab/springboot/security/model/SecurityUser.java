@@ -1,5 +1,6 @@
 package codigoalvo.lab.springboot.security.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class SecurityUser {
 	@Size(min = 5, max = 250)
 	private String login;
 
+	@JsonIgnore
 	@NotNull
 	@Size(min = 5, max = 250)
 	private String password;
@@ -48,11 +50,9 @@ public class SecurityUser {
 		return Objects.hash(login);
 	}
 
-	/*
 	@Override
 	public String toString() {
 		return login;
 	}
-	 */
 
 }

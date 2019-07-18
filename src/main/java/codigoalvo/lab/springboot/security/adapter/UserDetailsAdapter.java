@@ -1,6 +1,7 @@
 package codigoalvo.lab.springboot.security.adapter;
 
 import codigoalvo.lab.springboot.security.model.SecurityUser;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 public class UserDetailsAdapter implements UserDetails {
 
+	@JsonIgnore
 	private SecurityUser securityUser;
 
 	public UserDetailsAdapter(SecurityUser securityUser) {
@@ -25,6 +27,7 @@ public class UserDetailsAdapter implements UserDetails {
 		return authorities;
 	}
 
+	@JsonIgnore
 	@Override
 	public String getPassword() {
 		return this.securityUser == null ? null : securityUser.getPassword();

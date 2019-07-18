@@ -4,6 +4,8 @@ import codigoalvo.lab.springboot.event.RecursoCriadoEvento;
 import codigoalvo.lab.springboot.exception.ResourceNotFoundException;
 import codigoalvo.lab.springboot.model.Categoria;
 import codigoalvo.lab.springboot.repository.CategoriaRepository;
+import codigoalvo.lab.springboot.security.service.CustomUserDetailsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController implements BaseController {
@@ -24,11 +27,15 @@ public class CategoriaController implements BaseController {
 	private CategoriaRepository categoriaRepository;
 
 	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
+
+	@Autowired
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
 	@PreAuthorize("hasAuthority('CATEGORIA_CONSULTAR') and #oauth2.hasScope('read')")
 	public List<Categoria> listarCategorias() {
+		log.info("CategoriaController.listarCategorias() -> Usuario autenticado: "+ customUserDetailsService.getAuthenticated());
 		return categoriaRepository.findAll();
 	}
 

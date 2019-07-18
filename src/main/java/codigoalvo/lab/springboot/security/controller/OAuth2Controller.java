@@ -1,6 +1,8 @@
 package codigoalvo.lab.springboot.security.controller;
 
+import codigoalvo.lab.springboot.security.service.CustomUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -20,6 +22,9 @@ import java.util.Map;
 @EnableResourceServer
 public class OAuth2Controller {
 
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
+
 	@DeleteMapping("/revoke")
 	public void revoke(HttpServletRequest req, HttpServletResponse resp) {
 		log.debug("DELETE /revoke");
@@ -34,9 +39,9 @@ public class OAuth2Controller {
 
 	@RequestMapping(value = {"/user"}, produces = "application/json")
 	public Map<String, Object> user(OAuth2Authentication user) {
-		log.info("GET /user -> "+user);
+		log.info("GET /user -> " + user);
 		Map<String, Object> userInfo = new HashMap<>();
-		userInfo.put("user", user.getUserAuthentication().getPrincipal());
+		userInfo.put("userDetails", customUserDetailsService.getAuthenticated());
 		userInfo.put("authorities", AuthorityUtils.authorityListToSet(user.getUserAuthentication().getAuthorities()));
 		return userInfo;
 	}
