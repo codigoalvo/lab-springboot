@@ -2,8 +2,7 @@ package codigoalvo.lab.springboot.security.service;
 
 import codigoalvo.lab.springboot.security.adapter.UserDetailsAdapter;
 import codigoalvo.lab.springboot.security.model.SecurityUser;
-import codigoalvo.lab.springboot.security.repository.UsuarioRepository;
-import codigoalvo.lab.springboot.util.ErrorUtil;
+import codigoalvo.lab.springboot.security.repository.SecurityUserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,11 +20,11 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private SecurityUserRepository securityUserRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String userLogin) throws UsernameNotFoundException {
-		Optional<SecurityUser> usuarioOpt = usuarioRepository.findFirstByLogin(userLogin);
+		Optional<SecurityUser> usuarioOpt = securityUserRepository.findFirstByEmail(userLogin);
 		SecurityUser securityUser = usuarioOpt.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou password inválido(s)"));
 		log.debug("************* Usuario: " + securityUser + "UserDetailsAdapter.securityUser: " + securityUser);
 		UserDetailsAdapter response = new UserDetailsAdapter(usuarioOpt.get());
@@ -35,19 +34,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetailsAdapter getAuthenticated() {
 		try {
 			final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			log.debug("CustomUserDetailsService.getAuthenticated() - "+authentication);
-			if(authentication != null) {
+			log.debug("CustomUserDetailsService.getAuthenticated() - " + authentication);
+			if (authentication != null) {
 				final Object principal = authentication.getPrincipal();
-				log.debug("CustomUserDetailsService.getAuthenticated().getPrincipal() - "+principal);
-				if(principal != null) {
+				log.debug("CustomUserDetailsService.getAuthenticated().getPrincipal() - " + principal);
+				if (principal != null) {
 					if (principal instanceof UserDetailsAdapter) {
-						return (UserDetailsAdapter)principal;
+						return (UserDetailsAdapter) principal;
 					}
 					String userName = Objects.toString(principal);
-					return new UserDetailsAdapter(usuarioRepository.findFirstByLogin(userName).get());
+					return new UserDetailsAdapter(securityUserRepository.findFirstByEmail(userName).get());
 				}
 			}
-		} catch(final Throwable ex) {
+		} catch (final Throwable ex) {
 			log.error("CustomUserDetailsService.getAuthenticated() - Erro ao buscar detalhes de usuário autenticado", ex);
 		}
 		return null;

@@ -3,10 +3,8 @@ package codigoalvo.lab.springboot.security.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-@Data
 @Entity
 @Table(name = "security_profile")
 public class SecurityProfile {
@@ -25,7 +23,47 @@ public class SecurityProfile {
 			, inverseForeignKey = @ForeignKey(name = "fk_authority_pa")
 			, uniqueConstraints = @UniqueConstraint(name = "pk_profile_authority", columnNames = {"id_profile", "id_authority"})
 	)
-	private List<SecurityAuthority> authorities;
+	private Set<SecurityAuthority> authorities;
+
+	public SecurityProfile() {
+	}
+
+	public SecurityProfile(String name) {
+		this.setName(name);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<SecurityAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Set<SecurityAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+	public void addAuthority(SecurityAuthority authority) {
+		if (Objects.isNull(this.authorities)) {
+			this.authorities = new HashSet<>();
+		}
+		if (Objects.nonNull(authority)) {
+			authorities.add(authority);
+		}
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -39,4 +77,5 @@ public class SecurityProfile {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 }

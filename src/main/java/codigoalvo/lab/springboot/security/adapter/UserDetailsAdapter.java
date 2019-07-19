@@ -3,28 +3,32 @@ package codigoalvo.lab.springboot.security.adapter;
 import codigoalvo.lab.springboot.security.model.SecurityUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 public class UserDetailsAdapter implements UserDetails {
 
 	@JsonIgnore
-	private SecurityUser securityUser;
+	private SecurityUser securityUser = new SecurityUser();
 
 	public UserDetailsAdapter(SecurityUser securityUser) {
-		this.securityUser = securityUser == null ? new SecurityUser() : securityUser;
+		if (securityUser != null) {
+			BeanUtils.copyProperties(securityUser, this.securityUser, "loggedUser");
+		}
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		final List<GrantedAuthorityAdapter> authorities = new ArrayList<>();
+		final Set<GrantedAuthorityAdapter> authorities = new HashSet<>();
 		securityUser.getProfiles().forEach(p -> p.getAuthorities().forEach(a -> authorities.add(new GrantedAuthorityAdapter(a))));
-		return authorities;
+		return Collections.unmodifiableCollection(authorities);
 	}
 
 	@JsonIgnore

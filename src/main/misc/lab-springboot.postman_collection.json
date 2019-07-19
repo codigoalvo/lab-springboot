@@ -6,142 +6,300 @@
 	},
 	"item": [
 		{
-			"name": "categorias-listar",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "fcc55782-b88f-4b73-9590-456ae6d44ce5",
-							"type": "string"
+			"name": "categoria",
+			"item": [
+				{
+					"name": "categoria-listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NjkyOTQsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjYyNmY1YjI5LTdmZTYtNDI3MC1iOTc2LTRiZmQwZTViZmEwNSIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.fFSvZdZTPQRa-nrlP1-hwSOzMeO85UmC4mfpZKm5kkI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/categoria",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"categoria"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{hostname}}{{port}}{{context}}/categorias",
-					"host": [
-						"{{hostname}}{{port}}{{context}}"
-					],
-					"path": [
-						"categorias"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "categorias-buscar-por-id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "8d480211-3644-435f-be99-2f0cf9052bce",
-							"type": "string"
+				{
+					"name": "categoria-buscar-por-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8d480211-3644-435f-be99-2f0cf9052bce",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/categoria/2",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"categoria",
+								"2"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{hostname}}{{port}}{{context}}/categorias/2",
-					"host": [
-						"{{hostname}}{{port}}{{context}}"
-					],
-					"path": [
-						"categorias",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "categorias-remover",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{hostname}}{{port}}{{context}}/categorias/6",
-					"host": [
-						"{{hostname}}{{port}}{{context}}"
-					],
-					"path": [
-						"categorias",
-						"6"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "categorias-gravar",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "fcc55782-b88f-4b73-9590-456ae6d44ce5",
-							"type": "string"
+				{
+					"name": "categoria-remover",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/categoria/6",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"categoria",
+								"6"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"nome\": \"Tarifas\"\n}"
+				{
+					"name": "categoria-gravar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NTgyOTYsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6Ijk1MmNjY2E4LWI1OTctNDAzMS1iMDAzLTU1NWFhYjIwY2RiOCIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.a4U7UTrZIZlujq6d0qg8BR_ySCnEUPSVgwRT83kk0sk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Tarifas\"\n}"
+						},
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/categoria",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{hostname}}{{port}}{{context}}/categorias",
-					"host": [
-						"{{hostname}}{{port}}{{context}}"
-					],
-					"path": [
-						"categorias"
-					]
+				{
+					"name": "categoria-atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Diversos\"\n}"
+						},
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/categoria/15",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"categoria",
+								"15"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "categorias-atualizar",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"nome\": \"Diversos\"\n}"
+			"name": "usuario",
+			"item": [
+				{
+					"name": "usuario-listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NjkyOTQsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjYyNmY1YjI5LTdmZTYtNDI3MC1iOTc2LTRiZmQwZTViZmEwNSIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.fFSvZdZTPQRa-nrlP1-hwSOzMeO85UmC4mfpZKm5kkI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/usuario",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{hostname}}{{port}}{{context}}/categorias/15",
-					"host": [
-						"{{hostname}}{{port}}{{context}}"
-					],
-					"path": [
-						"categorias",
-						"15"
-					]
+				{
+					"name": "usuario-buscar-por-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8d480211-3644-435f-be99-2f0cf9052bce",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/usuario/2",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario-remover",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/usuario/3",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"usuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario-criar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NTgyOTYsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6Ijk1MmNjY2E4LWI1OTctNDAzMS1iMDAzLTU1NWFhYjIwY2RiOCIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.a4U7UTrZIZlujq6d0qg8BR_ySCnEUPSVgwRT83kk0sk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Fulano\",\n    \"email\": \"fulano@email.com\",\n    \"password\": \"fulano123\",\n    \"telefone\": \"+55 (11) 9.8888-7777\"\n}"
+						},
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/usuario",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario-alterar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM1NDY4MjgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIlVTVUFSSU9fQ09OU1VMVEFSIiwiQ0FURUdPUklBX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjJjNDU5YjBlLWZiZGUtNDdjMi05NDA0LTU0MTA3YmNjMDIwNiIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.b-89M_4ewPPMNwUf6fmT44OiWK6DyUZkKziTS9oHse0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Super Admin\",\n    \"telefone\": \"6666-9999\"\n}"
+						},
+						"url": {
+							"raw": "{{hostname}}{{port}}{{context}}/usuario/1",
+							"host": [
+								"{{hostname}}{{port}}{{context}}"
+							],
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "oauth2 get token",
@@ -273,7 +431,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "fcc55782-b88f-4b73-9590-456ae6d44ce5",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM1NDI0NDYsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIlVTVUFSSU9fQ09OU1VMVEFSIiwiQ0FURUdPUklBX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6ImIyODhkMDAxLTk3OTEtNDljMC04ZDVkLWZjNmNjODU0MjFmZiIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.MfuOjBdvOK2LdamKs20Lv8AbpIdjn4r_4by3BpkYJZM",
 							"type": "string"
 						}
 					]
@@ -287,6 +445,33 @@
 					],
 					"path": [
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjMyNzkxNTgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6ImE0MjJkYzc2LWFkOWMtNDc0OC04Zjg2LTFiNzhkN2Y5M2MwNSIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.62yhegshE_sEM_1f0tCO3TBGXtQISKZEbZJxzZHxloA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}{{port}}{{context}}/revoke",
+					"host": [
+						"{{hostname}}{{port}}{{context}}"
+					],
+					"path": [
+						"revoke"
 					]
 				}
 			},
