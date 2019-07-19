@@ -27,7 +27,7 @@ public class Usuario implements Model {
 	@Size(min = 5, max = 250)
 	private String password;
 
-	@Size(max = 200)
+	@Size(max = 150)
 	private String nome;
 
 	@Size(max = 25)

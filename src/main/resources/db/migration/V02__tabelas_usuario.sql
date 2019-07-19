@@ -1,3 +1,18 @@
+CREATE TABLE security_user (
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    email CHARACTER VARYING(250) NOT NULL,
+    password CHARACTER VARYING(250) NOT NULL,
+
+    telefone CHARACTER VARYING(25),
+    nome CHARACTER VARYING(150),
+
+    created_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+
+    CONSTRAINT pk_security_user_id PRIMARY KEY (id),
+    CONSTRAINT uk_security_user_email UNIQUE (email)
+);
+
 CREATE TABLE security_profile (
     id BIGSERIAL PRIMARY KEY NOT NULL,
     name CHARACTER VARYING(100) NOT NULL,
@@ -7,21 +22,6 @@ CREATE TABLE security_profile (
 
     CONSTRAINT pk_security_profile_id PRIMARY KEY (id),
     CONSTRAINT uk_security_profile_name UNIQUE (name)
-);
-
-CREATE TABLE security_user (
-    id BIGSERIAL PRIMARY KEY NOT NULL,
-    email CHARACTER VARYING(250) NOT NULL,
-    password CHARACTER VARYING(250) NOT NULL,
-
-    telefone CHARACTER VARYING(25),
-    nome CHARACTER VARYING(200),
-
-    created_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
-    updated_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
-
-    CONSTRAINT pk_security_user_id PRIMARY KEY (id),
-    CONSTRAINT uk_security_user_email UNIQUE (email)
 );
 
 CREATE TABLE security_authority (
