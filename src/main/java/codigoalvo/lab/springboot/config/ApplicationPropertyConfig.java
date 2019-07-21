@@ -17,6 +17,10 @@ public class ApplicationPropertyConfig {
         return allowedOrigin;
     }
 
+    public void setAllowedOrigin(String allowedOrigin) {
+        this.allowedOrigin = allowedOrigin;
+    }
+
     public static class Security {
         private boolean enableHttps;
 
