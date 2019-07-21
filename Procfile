@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=herokumysql $JAVA_OPTS -jar target/*lab-springboot*.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=herokupsql $JAVA_OPTS -jar target/*lab-springboot*.jar

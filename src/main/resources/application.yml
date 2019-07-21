@@ -71,3 +71,13 @@ spring:
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
 ---
+
+spring:
+  profiles: herokupsql
+  jpa:
+    database: PostgreSQL
+  datasource:
+    url: jdbc:postgresql://ec2-54-221-215-228.compute-1.amazonaws.com:5432/dardgfv06gdklh
+    username: pysjkbziqzpdjc
+    password: 0c1a16d55947b613bbadfe38a66b2a35f18cc5ce30bb4ad93510e4a920a1b5f9
+---
