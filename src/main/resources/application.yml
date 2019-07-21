@@ -20,8 +20,8 @@ spring:
 
 
 #spring.profiles.active: devh2memtcp
----
 
+---
 spring:
   profiles: devh2mem
   jpa.database-platform: org.hibernate.dialect.H2Dialect
@@ -30,8 +30,8 @@ spring:
     url: jdbc:h2:mem:lab
     datasource.username: sa
     datasource.password:
----
 
+---
 spring:
   profiles: devh2memtcp   #Precisa estar rodando o H2 como serviço TCP
   jpa.database-platform: org.hibernate.dialect.H2Dialect
@@ -40,8 +40,8 @@ spring:
     url: jdbc:h2:tcp://localhost:9095/mem:lab
     datasource.username: sa
     datasource.password:
----
 
+---
 spring:
   profiles: devh2file   #Precisa estar rodando o H2 como serviço TCP
   jpa.database-platform: org.hibernate.dialect.H2Dialect
@@ -50,8 +50,8 @@ spring:
     url: jdbc:h2:tcp://localhost:9095/file:~/lab.h2;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1;
     username: sa
     password:
----
 
+---
 spring:
   profiles: devhpsql
   jpa:
@@ -60,8 +60,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/desenv?createDatabaseIfNotExist=true&useSSL=false
     username: postgres
     password: postgres
----
 
+---
 spring:
   profiles: herokumysql
   jpa:
@@ -70,7 +70,11 @@ spring:
     url: {JDBC_DATABASE_URL}
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
+
 ---
+server:
+  port: 80
+  servlet.context-path: /
 
 spring:
   profiles: herokupsql
@@ -80,4 +84,5 @@ spring:
     url: {JDBC_DATABASE_URL}
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
+
 ---
