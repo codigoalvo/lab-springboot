@@ -18,6 +18,7 @@ spring:
       ddl-auto: none
       jdbc.lob.non_contextual_creation: true
 
+codigoalvo.security.enable-https: false
 
 #spring.profiles.active: devh2memtcp
 
@@ -71,6 +72,10 @@ spring:
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
 
+codigoalvo:
+  security.enable-https: true
+  allowedOrigin: https://codigoalvo-lab-angular.herokuapp.com
+
 ---
 server:
   port: 80
@@ -84,5 +89,9 @@ spring:
     url: {JDBC_DATABASE_URL}
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
+
+codigoalvo:
+  security.enable-https: true
+  allowedOrigin: https://codigoalvo-lab-angular.herokuapp.com
 
 ---

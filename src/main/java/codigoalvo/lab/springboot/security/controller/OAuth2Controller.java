@@ -1,5 +1,6 @@
 package codigoalvo.lab.springboot.security.controller;
 
+import codigoalvo.lab.springboot.config.ApplicationPropertyConfig;
 import codigoalvo.lab.springboot.security.service.CustomUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,15 @@ public class OAuth2Controller {
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
 
+	@Autowired
+	private ApplicationPropertyConfig applicationPropertyConfig;
+
 	@DeleteMapping("/revoke")
 	public void revoke(HttpServletRequest req, HttpServletResponse resp) {
 		log.debug("DELETE /revoke");
 		Cookie cookie = new Cookie("refreshToken", null);
 		cookie.setHttpOnly(true);
-		cookie.setSecure(false); // TODO: Em producao sera true
+		cookie.setSecure(applicationPropertyConfig.getSecurity().isEnableHttps());
 		cookie.setPath(req.getContextPath() + "/oauth/token");
 		cookie.setMaxAge(0);
 		resp.addCookie(cookie);

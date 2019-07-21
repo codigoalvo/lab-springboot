@@ -1,5 +1,7 @@
 package codigoalvo.lab.springboot.security.token;
 
+import codigoalvo.lab.springboot.config.ApplicationPropertyConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -20,6 +22,9 @@ import java.util.Objects;
 
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
+
+	@Autowired
+	private ApplicationPropertyConfig applicationPropertyConfig;
 
 	@Override
 	public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> aClass) {
@@ -46,7 +51,7 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 	private void adicionarRefreshTokenAoCookie(String refreshToken, HttpServletRequest req, HttpServletResponse resp) {
 		Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
 		refreshTokenCookie.setHttpOnly(true);
-		refreshTokenCookie.setSecure(false); //TODO: Migrar para true em produção (ou pegar de properties);
+		refreshTokenCookie.setSecure(applicationPropertyConfig.getSecurity().isEnableHttps());
 		refreshTokenCookie.setPath(req.getContextPath() + "/oauth/token");
 		refreshTokenCookie.setMaxAge(30 * 24 * 60 * 60); // 30 dias
 		resp.addCookie(refreshTokenCookie);

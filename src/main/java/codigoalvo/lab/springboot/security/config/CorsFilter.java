@@ -1,5 +1,7 @@
 package codigoalvo.lab.springboot.security.config;
 
+import codigoalvo.lab.springboot.config.ApplicationPropertyConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -13,7 +15,8 @@ import java.io.IOException;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 
-	public static final String ORIGIN_PERMITIDA = "http://localhost:3000"; // TODO: COnfigurar para diferentes ambientes
+	@Autowired
+	private ApplicationPropertyConfig applicationPropertyConfig;
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -22,10 +25,10 @@ public class CorsFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse resp = (HttpServletResponse)response;
 
-		resp.setHeader("Access-Control-Allow-Origin", ORIGIN_PERMITIDA);
+		resp.setHeader("Access-Control-Allow-Origin", applicationPropertyConfig.getAllowedOrigin());
 		resp.setHeader("Access-Control-Allow-Credentials", "true");
 
-		if ("OPTIONS".equals(req.getMethod())  &&  ORIGIN_PERMITIDA.equals(req.getHeader("Origin"))) {
+		if ("OPTIONS".equals(req.getMethod())  &&  applicationPropertyConfig.getAllowedOrigin().equals(req.getHeader("Origin"))) {
 			resp.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
 			resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
 			resp.setHeader("Access-Control-Max-Age", "3600");
