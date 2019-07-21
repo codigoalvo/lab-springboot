@@ -19,7 +19,7 @@ spring:
       jdbc.lob.non_contextual_creation: true
 
 
-spring.profiles.active: devh2memtcp
+#spring.profiles.active: devh2memtcp
 ---
 
 spring:
@@ -60,6 +60,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/desenv?createDatabaseIfNotExist=true&useSSL=false
     username: postgres
     password: postgres
+---
 
 spring:
   profiles: herokumysql
@@ -69,3 +70,4 @@ spring:
     url: {JDBC_DATABASE_URL}
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
+---
