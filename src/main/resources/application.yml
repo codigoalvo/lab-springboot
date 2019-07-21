@@ -60,3 +60,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/desenv?createDatabaseIfNotExist=true&useSSL=false
     username: postgres
     password: postgres
+
+spring:
+  profiles: herokumysql
+  jpa:
+    database: MYSQL
+  datasource:
+    url: {JDBC_DATABASE_URL}
+    username: {JDBC_DATABASE_USERNAME}
+    password: {JDBC_DATABASE_PASSWORD}
