@@ -35,7 +35,7 @@ public class CategoriaController implements BaseController {
 	@GetMapping
 	@PreAuthorize("hasAuthority('CATEGORIA_CONSULTAR') and #oauth2.hasScope('read')")
 	public List<Categoria> listarCategorias() {
-		log.info("CategoriaController.listarCategorias() -> Usuario autenticado: "+ customUserDetailsService.getAuthenticated());
+		log.debug("CategoriaController.listarCategorias() -> Usuario autenticado: "+ customUserDetailsService.getAuthenticated());
 		return categoriaRepository.findAll();
 	}
 
