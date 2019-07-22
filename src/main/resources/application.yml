@@ -64,31 +64,17 @@ spring:
 
 ---
 spring:
-  profiles: herokumysql
+  profiles: heroku
   jpa:
-    database: MYSQL
+    database: {JDBC_DATABASE}
   datasource:
     url: {JDBC_DATABASE_URL}
     username: {JDBC_DATABASE_USERNAME}
     password: {JDBC_DATABASE_PASSWORD}
 
-codigoalvo:
-  security.enable-https: true
-  allowedOrigin: https://codigoalvo-lab-angular.herokuapp.com
-
----
 server:
   port: 80
   servlet.context-path: /
-
-spring:
-  profiles: herokupsql
-  jpa:
-    database: PostgreSQL
-  datasource:
-    url: {JDBC_DATABASE_URL}
-    username: {JDBC_DATABASE_USERNAME}
-    password: {JDBC_DATABASE_PASSWORD}
 
 codigoalvo:
   security.enable-https: true
