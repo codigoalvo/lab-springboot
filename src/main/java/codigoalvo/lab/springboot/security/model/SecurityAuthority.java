@@ -1,7 +1,6 @@
 package codigoalvo.lab.springboot.security.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -9,12 +8,8 @@ import java.util.Objects;
 @Table(name = "security_authority")
 public class SecurityAuthority {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Size(min = 2, max = 100)
-	@Column(nullable = false, unique = true)
 	private String name;
 
 	public SecurityAuthority() {
@@ -24,6 +19,8 @@ public class SecurityAuthority {
 		this.setName(name);
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -32,6 +29,8 @@ public class SecurityAuthority {
 		this.id = id;
 	}
 
+	@Size(min = 2, max = 100)
+	@Column(nullable = false, unique = true)
 	public String getName() {
 		return this.name == null ? null : this.name.toUpperCase();
 	}

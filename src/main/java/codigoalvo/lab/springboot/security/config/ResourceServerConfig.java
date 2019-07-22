@@ -18,8 +18,13 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	private static final String[] AUTH_WHITELIST = { // -- swagger ui
-			"/swagger-resources/**", "//swagger-resources/configuration/**", "/swagger-ui.html", "/swagger-ui.html/**",
-			"/v2/api-docs", "/webjars/**", "/actuator/**"};
+			"/swagger-resources/**",
+			"//swagger-resources/configuration/**",
+			"/swagger-ui.html",
+			"/swagger-ui.html/**",
+			"/v2/api-docs",
+			"/webjars/**",
+			"/actuator/**"};
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {

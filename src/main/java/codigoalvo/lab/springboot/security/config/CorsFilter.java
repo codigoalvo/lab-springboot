@@ -22,13 +22,13 @@ public class CorsFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		HttpServletRequest req = (HttpServletRequest)request;
-		HttpServletResponse resp = (HttpServletResponse)response;
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
 
 		resp.setHeader("Access-Control-Allow-Origin", applicationPropertyConfig.getAllowedOrigin());
 		resp.setHeader("Access-Control-Allow-Credentials", "true");
 
-		if ("OPTIONS".equals(req.getMethod())  &&  applicationPropertyConfig.getAllowedOrigin().equals(req.getHeader("Origin"))) {
+		if ("OPTIONS".equals(req.getMethod()) && applicationPropertyConfig.getAllowedOrigin().equals(req.getHeader("Origin"))) {
 			resp.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
 			resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
 			resp.setHeader("Access-Control-Max-Age", "3600");

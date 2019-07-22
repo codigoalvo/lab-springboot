@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController implements BaseController {
 
 	@Autowired
@@ -85,8 +85,8 @@ public class UsuarioController implements BaseController {
 			if (Objects.nonNull(usuario.getTelefone())) {
 				usuarioSalva.setTelefone(usuario.getTelefone());
 			}
-			if (Objects.nonNull(usuario.getNome())) {
-				usuarioSalva.setNome(usuario.getNome());
+			if (Objects.nonNull(usuario.getName())) {
+				usuarioSalva.setName(usuario.getName());
 			}
 			usuario = usuarioRepository.save(usuarioSalva);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(usuario);

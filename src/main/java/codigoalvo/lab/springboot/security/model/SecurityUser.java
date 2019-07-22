@@ -13,18 +13,39 @@ import java.util.Set;
 @Table(name = "security_user")
 public class SecurityUser {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true, nullable = false)
-	@Size(min = 5, max = 250)
 	private String email;
 
 	@JsonIgnore
+	private String password;
+
+	private String name;
+
+	private Set<SecurityProfile> profiles;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getId() {
+		return id;
+	}
+
+	@Column(unique = true, nullable = false)
+	@Size(min = 5, max = 250)
+	public String getEmail() {
+		return email;
+	}
+
 	@NotNull
 	@Size(min = 5, max = 250)
-	private String password;
+	public String getPassword() {
+		return password;
+	}
+
+	@Size(max = 150)
+	public String getName() {
+		return name;
+	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "security_user_profile"
@@ -34,14 +55,8 @@ public class SecurityUser {
 			, inverseForeignKey = @ForeignKey(name = "fk_profile_sup")
 			, uniqueConstraints = @UniqueConstraint(name = "pk_user_profile", columnNames = {"id_user", "id_profile"})
 	)
-	private Set<SecurityProfile> profiles;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public Set<SecurityProfile> getProfiles() {
+		return profiles;
 	}
 
 	@Transient
@@ -49,28 +64,24 @@ public class SecurityUser {
 		return getEmail();
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setLogin(String login) {
 		this.setEmail(login);
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getEmail() {
-		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Set<SecurityProfile> getProfiles() {
-		return profiles;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setProfiles(Set<SecurityProfile> profiles) {

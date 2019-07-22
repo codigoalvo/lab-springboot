@@ -42,6 +42,10 @@ public class UserDetailsAdapter implements UserDetails {
 		return this.securityUser == null ? null : securityUser.getLogin();
 	}
 
+	public String getName() {
+		return this.securityUser == null ? null : securityUser.getName();
+	}
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return isValid();
@@ -65,5 +69,6 @@ public class UserDetailsAdapter implements UserDetails {
 	private boolean isValid() {
 		return this.securityUser != null;
 	}
+
 
 }
