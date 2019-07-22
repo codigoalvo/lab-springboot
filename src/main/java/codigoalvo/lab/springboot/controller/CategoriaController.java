@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 public class CategoriaController implements BaseController {
 
 	@Autowired

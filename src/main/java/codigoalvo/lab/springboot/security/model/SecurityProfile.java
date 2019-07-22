@@ -1,28 +1,19 @@
 package codigoalvo.lab.springboot.security.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "security_profile")
 public class SecurityProfile {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
 
 	private String name;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "security_profile_authority"
-			, joinColumns = @JoinColumn(name = "id_profile")
-			, inverseJoinColumns = @JoinColumn(name = "id_authority")
-			, foreignKey = @ForeignKey(name = "fk_profile_pa")
-			, inverseForeignKey = @ForeignKey(name = "fk_authority_pa")
-			, uniqueConstraints = @UniqueConstraint(name = "pk_profile_authority", columnNames = {"id_profile", "id_authority"})
-	)
 	private Set<SecurityAuthority> authorities;
 
 	public SecurityProfile() {
@@ -32,24 +23,34 @@ public class SecurityProfile {
 		this.setName(name);
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "security_profile_authority"
+			, joinColumns = @JoinColumn(name = "id_profile")
+			, inverseJoinColumns = @JoinColumn(name = "id_authority")
+			, foreignKey = @ForeignKey(name = "fk_profile_pa")
+			, inverseForeignKey = @ForeignKey(name = "fk_authority_pa")
+			, uniqueConstraints = @UniqueConstraint(name = "pk_profile_authority", columnNames = {"id_profile", "id_authority"})
+	)
 	public Set<SecurityAuthority> getAuthorities() {
 		return authorities;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setAuthorities(Set<SecurityAuthority> authorities) {

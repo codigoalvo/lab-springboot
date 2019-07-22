@@ -34,20 +34,31 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetailsAdapter getAuthenticated() {
 		try {
 			final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			log.debug("CustomUserDetailsService.getAuthenticated() - " + authentication);
+			return this.getUserDetailsAdapterFromAuthentication(authentication);
+		} catch (final Throwable ex) {
+			log.error("CustomUserDetailsService.getAuthenticated() - Erro ao obter Authentication do context", ex);
+		}
+		return null;
+	}
+
+	public UserDetailsAdapter getUserDetailsAdapterFromAuthentication(Authentication authentication) {
+		try {
+			log.debug("CustomUserDetailsService.getUserDetailsAdapterFromAuthentication() - " + authentication);
 			if (authentication != null) {
 				final Object principal = authentication.getPrincipal();
-				log.debug("CustomUserDetailsService.getAuthenticated().getPrincipal() - " + principal);
+				log.debug("CustomUserDetailsService.getUserDetailsAdapterFromAuthentication().getPrincipal() - " + principal);
 				if (principal != null) {
 					if (principal instanceof UserDetailsAdapter) {
 						return (UserDetailsAdapter) principal;
 					}
 					String userName = Objects.toString(principal);
-					return new UserDetailsAdapter(securityUserRepository.findFirstByEmail(userName).get());
+					UserDetailsAdapter userDetailsAdapter = new UserDetailsAdapter(securityUserRepository.findFirstByEmail(userName).get());
+					log.debug("CustomUserDetailsService.getUserDetailsAdapterFromAuthentication: "+userDetailsAdapter);
+					return userDetailsAdapter;
 				}
 			}
 		} catch (final Throwable ex) {
-			log.error("CustomUserDetailsService.getAuthenticated() - Erro ao buscar detalhes de usuário autenticado", ex);
+			log.error("CustomUserDetailsService.getUserDetailsAdapterFromAuthentication() - Erro ao buscar detalhes de usuário autenticado", ex);
 		}
 		return null;
 	}

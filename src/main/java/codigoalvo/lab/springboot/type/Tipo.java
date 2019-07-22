@@ -3,8 +3,11 @@ package codigoalvo.lab.springboot.type;
 public interface Tipo<T extends Tipo, K, V> {
 
 	T[] getAll();
+
 	K getKey();
+
 	V getValue();
+
 	T getDefault();
 
 	default T getByKey(K key) {

@@ -1,13 +1,9 @@
 package codigoalvo.lab.springboot.model;
 
-import codigoalvo.lab.springboot.security.model.SecurityUser;
 import codigoalvo.lab.springboot.security.util.PasswordUtil;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -27,19 +23,11 @@ public class Usuario implements Model {
 	@Size(min = 5, max = 250)
 	private String password;
 
-	@Size(max = 150)
-	private String nome;
-
 	@Size(max = 25)
 	private String telefone;
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	@Size(max = 150)
+	private String name;
 
 	public void changePassword(String password) {
 		if (Objects.nonNull(password)) {
@@ -90,4 +78,13 @@ public class Usuario implements Model {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

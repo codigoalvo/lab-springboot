@@ -1,4 +1,4 @@
-package codigoalvo.lab.springboot.security.token;
+package codigoalvo.lab.springboot.security.config;
 
 import codigoalvo.lab.springboot.config.ApplicationPropertyConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
@@ -33,9 +32,9 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 
 	@Override
 	public OAuth2AccessToken beforeBodyWrite(OAuth2AccessToken body, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest request, ServerHttpResponse response) {
-		HttpServletRequest req = ((ServletServerHttpRequest)request).getServletRequest();
-		HttpServletResponse resp = ((ServletServerHttpResponse)response).getServletResponse();
-		DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken)body;
+		HttpServletRequest req = ((ServletServerHttpRequest) request).getServletRequest();
+		HttpServletResponse resp = ((ServletServerHttpResponse) response).getServletResponse();
+		DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) body;
 		if (Objects.nonNull(body.getRefreshToken())) {
 			String refreshToken = body.getRefreshToken().getValue();
 			adicionarRefreshTokenAoCookie(refreshToken, req, resp);
