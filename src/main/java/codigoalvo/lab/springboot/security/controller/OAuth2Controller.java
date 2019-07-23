@@ -1,7 +1,7 @@
 package codigoalvo.lab.springboot.security.controller;
 
 import codigoalvo.lab.springboot.config.ApplicationPropertyConfig;
-import codigoalvo.lab.springboot.security.service.CustomUserDetailsService;
+import codigoalvo.lab.springboot.security.service.SecurityUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class OAuth2Controller {
 
 	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
+	private SecurityUserService securityUserService;
 
 	@Autowired
 	private ApplicationPropertyConfig applicationPropertyConfig;
@@ -45,7 +45,7 @@ public class OAuth2Controller {
 	public Map<String, Object> user(OAuth2Authentication user) {
 		log.info("GET /user -> " + user);
 		Map<String, Object> userInfo = new HashMap<>();
-		userInfo.put("userDetails", customUserDetailsService.getAuthenticated());
+		userInfo.put("userDetails", securityUserService.getAuthenticated());
 		userInfo.put("authorities", AuthorityUtils.authorityListToSet(user.getUserAuthentication().getAuthorities()));
 		return userInfo;
 	}

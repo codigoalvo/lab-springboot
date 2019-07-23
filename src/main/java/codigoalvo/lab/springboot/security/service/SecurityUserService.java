@@ -17,14 +17,14 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class SecurityUserService implements UserDetailsService {
 
 	@Autowired
 	private SecurityUserRepository securityUserRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String userLogin) throws UsernameNotFoundException {
-		Optional<SecurityUser> usuarioOpt = securityUserRepository.findFirstByEmail(userLogin);
+		Optional<SecurityUser> usuarioOpt = securityUserRepository.findFirstByLogin(userLogin);
 		SecurityUser securityUser = usuarioOpt.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou password inválido(s)"));
 		log.debug("************* Usuario: " + securityUser + "UserDetailsAdapter.securityUser: " + securityUser);
 		UserDetailsAdapter response = new UserDetailsAdapter(usuarioOpt.get());
@@ -52,7 +52,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 						return (UserDetailsAdapter) principal;
 					}
 					String userName = Objects.toString(principal);
-					UserDetailsAdapter userDetailsAdapter = new UserDetailsAdapter(securityUserRepository.findFirstByEmail(userName).get());
+					UserDetailsAdapter userDetailsAdapter = new UserDetailsAdapter(securityUserRepository.findFirstByLogin(userName).get());
 					log.debug("CustomUserDetailsService.getUserDetailsAdapterFromAuthentication: "+userDetailsAdapter);
 					return userDetailsAdapter;
 				}

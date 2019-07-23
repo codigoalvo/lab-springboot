@@ -15,7 +15,7 @@ public class SecurityUser {
 
 	private Long id;
 
-	private String email;
+	private String login;
 
 	@JsonIgnore
 	private String password;
@@ -30,10 +30,10 @@ public class SecurityUser {
 		return id;
 	}
 
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false, name = "email")
 	@Size(min = 5, max = 250)
-	public String getEmail() {
-		return email;
+	public String getLogin() {
+		return login;
 	}
 
 	@NotNull
@@ -60,8 +60,8 @@ public class SecurityUser {
 	}
 
 	@Transient
-	public String getLogin() {
-		return getEmail();
+	public String getEmail() {
+		return getLogin();
 	}
 
 	public void setId(Long id) {
@@ -69,11 +69,11 @@ public class SecurityUser {
 	}
 
 	public void setLogin(String login) {
-		this.setEmail(login);
+		this.login = login;
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.setLogin(email);
 	}
 
 	public void setName(String name) {

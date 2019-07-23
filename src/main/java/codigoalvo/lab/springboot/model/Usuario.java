@@ -15,8 +15,8 @@ public class Usuario implements Model {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
 	@Size(min = 5, max = 250)
+	@Column(unique = true)
 	private String email;
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

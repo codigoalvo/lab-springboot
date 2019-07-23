@@ -4,7 +4,7 @@ import codigoalvo.lab.springboot.event.RecursoCriadoEvento;
 import codigoalvo.lab.springboot.exception.ResourceNotFoundException;
 import codigoalvo.lab.springboot.model.Usuario;
 import codigoalvo.lab.springboot.repository.UsuarioRepository;
-import codigoalvo.lab.springboot.security.service.CustomUserDetailsService;
+import codigoalvo.lab.springboot.security.service.SecurityUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -28,7 +28,7 @@ public class UsuarioController implements BaseController {
 	private UsuarioRepository usuarioRepository;
 
 	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
+	private SecurityUserService securityUserService;
 
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -36,7 +36,7 @@ public class UsuarioController implements BaseController {
 	@GetMapping
 	@PreAuthorize("hasAuthority('USUARIO_CONSULTAR') and #oauth2.hasScope('read')")
 	public List<Usuario> listarUsuarios() {
-		log.info("UsuarioController.listarUsuarios() -> Usuario autenticado: "+ customUserDetailsService.getAuthenticated());
+		log.info("UsuarioController.listarUsuarios() -> Usuario autenticado: "+ securityUserService.getAuthenticated());
 		return usuarioRepository.findAll();
 	}
 
