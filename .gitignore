@@ -1,13 +1,11 @@
-# Compiled class file
 *.class
 
-# Mobile Tools for Java (J2ME)
+*.log
+
 .mtj.tmp/
 
-# BlueJ files
 *.ctxt
 
-# Package Files #
 *.jar
 *.war
 *.ear
@@ -16,10 +14,22 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-*.log
+*.iws
+*.iml
+*.ipr
+
+mvnw
+mvnw.cmd
+
+hs_err_pid*
 
 log/*
 /log/
@@ -27,15 +37,19 @@ bin/*
 /bin/
 target/*
 /target/
+
+/nbproject/private/
+nbproject/private/*
 build/*
 /build/
-
-# ide config files
-lab-springboot.iml
-.classpath
-.project
-mvnw
-mvnw.cmd
+nbbuild/*
+/nbbuild/
+dist/*
+/dist/
+nbdist/*
+/nbdist/
+.nb-gradle/*
+/.nb-gradle/
 
 /.idea/
 .idea/*
@@ -45,4 +59,3 @@ mvnw.cmd
 .mvn/*
 /.settings/
 .settings/*
-
