@@ -29,8 +29,8 @@ spring:
   datasource:
     driverClassName: org.h2.Driver
     url: jdbc:h2:mem:lab
-    datasource.username: sa
-    datasource.password:
+    username: sa
+    password:
 
 ---
 spring:
@@ -39,8 +39,8 @@ spring:
   datasource:
     driverClassName: org.h2.Driver
     url: jdbc:h2:tcp://localhost:9095/mem:lab
-    datasource.username: sa
-    datasource.password:
+    username: sa
+    password:
 
 ---
 spring:
