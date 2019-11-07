@@ -20,7 +20,7 @@ spring:
 
 codigoalvo.security.enable-https: false
 
-spring.profiles.active: devh2memtcp
+spring.profiles.active: devh2memtcp, oauth2-security
 
 ---
 spring:

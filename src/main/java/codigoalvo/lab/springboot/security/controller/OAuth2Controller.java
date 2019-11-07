@@ -4,6 +4,7 @@ import codigoalvo.lab.springboot.config.ApplicationPropertyConfig;
 import codigoalvo.lab.springboot.security.service.SecurityUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+@Profile("oauth2-security")
 @Slf4j
 @RestController
 @EnableResourceServer
