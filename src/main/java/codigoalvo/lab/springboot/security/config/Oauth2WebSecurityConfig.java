@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableAuthorizationServer
 @EnableResourceServer
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class Oauth2WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {

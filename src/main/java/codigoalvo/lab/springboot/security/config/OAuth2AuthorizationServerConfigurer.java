@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 @Profile("oauth2-security")
 @Configuration
-public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
+public class OAuth2AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
 
 	private static final String SECRET_PHRASE = "@nGuL4r";
 
