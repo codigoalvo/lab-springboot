@@ -2,9 +2,9 @@ package codigoalvo.lab.springboot.controller;
 
 import codigoalvo.lab.springboot.event.RecursoCriadoEvento;
 import codigoalvo.lab.springboot.exception.ResourceNotFoundException;
-import codigoalvo.lab.springboot.model.Usuario;
+import codigoalvo.lab.springboot.entities.model.Usuario;
 import codigoalvo.lab.springboot.repository.UsuarioRepository;
-import codigoalvo.lab.springboot.security.service.SecurityUserService;
+import codigoalvo.lab.springboot.security.common.service.SecurityUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;

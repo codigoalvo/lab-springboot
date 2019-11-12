@@ -1,6 +1,6 @@
 package codigoalvo.lab.springboot.exception;
 
-import codigoalvo.lab.springboot.util.Erro;
+import codigoalvo.lab.springboot.entities.dto.ErrorResponse;
 import codigoalvo.lab.springboot.util.ErrorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 		String msgDesenvolvedor = ErrorUtil.getErrorMessage(ex);
 		String msgUsuario = messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale());
 		log.warn(msgUsuario + " - " + msgDesenvolvedor);
-		List<Erro> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
+		List<ErrorResponse> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 
@@ -44,23 +44,23 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		String msgUsuario = messageSource.getMessage("mensagem.requisicao-invalida", null, LocaleContextHolder.getLocale());
 		String msgDesenvolvedor = Objects.nonNull(ex.getRootCause()) ? ex.getRootCause().getMessage() : ex.getMessage();
-		List<Erro> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
+		List<ErrorResponse> erros = ErrorUtil.singleErrorAsList(msgUsuario, msgDesenvolvedor);
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
 
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-		List<Erro> erros = criarListaDeErros(ex.getBindingResult(), true);
+		List<ErrorResponse> erros = criarListaDeErros(ex.getBindingResult(), true);
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
 
 
-	private List<Erro> criarListaDeErros(BindingResult bindingResult, boolean incluirNomeCampo) {
-		List<Erro> erros = new ArrayList<>();
+	private List<ErrorResponse> criarListaDeErros(BindingResult bindingResult, boolean incluirNomeCampo) {
+		List<ErrorResponse> erros = new ArrayList<>();
 		for (FieldError fieldError : bindingResult.getFieldErrors()) {
 			String msgCampo = incluirNomeCampo ? obterMsgNomeCampo(fieldError.getObjectName(), fieldError.getField()) : "";
 			String msgUsuario = msgCampo + messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
-			erros.add(new Erro(msgUsuario, fieldError.toString(), fieldError.getObjectName() + "." + fieldError.getField()));
+			erros.add(new ErrorResponse(msgUsuario, fieldError.toString(), fieldError.getObjectName() + "." + fieldError.getField()));
 		}
 		return erros;
 	}

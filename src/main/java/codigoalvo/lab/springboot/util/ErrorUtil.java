@@ -1,5 +1,6 @@
 package codigoalvo.lab.springboot.util;
 
+import codigoalvo.lab.springboot.entities.dto.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
@@ -31,8 +32,8 @@ public class ErrorUtil {
 		return sb.toString();
 	}
 
-	public static List<Erro> singleErrorAsList(String msgUsuario, String msgDesenvolvedor) {
-		return Arrays.asList(new Erro(msgUsuario, msgDesenvolvedor));
+	public static List<ErrorResponse> singleErrorAsList(String msgUsuario, String msgDesenvolvedor) {
+		return Arrays.asList(new ErrorResponse(msgUsuario, msgDesenvolvedor));
 	}
 
 	public static String getTestMessage(Class classe, Object esperado, Object resultado, boolean log) {
