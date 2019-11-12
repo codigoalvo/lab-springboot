@@ -3,8 +3,6 @@ server:
   port: 8080
   servlet.context-path: /lab-springboot/
 
-logging.level.codigoalvo: TRACE
-
 #flyway.baseline-on-migrate: true
 
 spring:
@@ -18,49 +16,25 @@ spring:
       ddl-auto: none
       jdbc.lob.non_contextual_creation: true
 
-codigoalvo.security.enable-https: false
+codigoalvo:
+  security.enable-https: false
 
-spring.profiles.active: devh2memtcp, oauth2-security
+logging.level:
+  codigoalvo: TRACE
 
----
-spring:
-  profiles: devh2mem
-  jpa.database-platform: org.hibernate.dialect.H2Dialect
-  datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:lab
-    username: sa
-    password:
+spring.profiles.active: dev-h2-mem, oauth2-security
 
 ---
 spring:
-  profiles: devh2memtcp   #Precisa estar rodando o H2 como serviço TCP
-  jpa.database-platform: org.hibernate.dialect.H2Dialect
+  profiles: dev-psql
   datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:tcp://localhost:9095/mem:lab
-    username: sa
-    password:
-
----
-spring:
-  profiles: devh2file   #Precisa estar rodando o H2 como serviço TCP
-  jpa.database-platform: org.hibernate.dialect.H2Dialect
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost:9095/file:~/lab.h2;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1;
-    username: sa
-    password:
-
----
-spring:
-  profiles: devhpsql
-  jpa:
-    database: PostgreSQL
-  datasource:
-    url: jdbc:postgresql://localhost:5432/desenv?createDatabaseIfNotExist=true&useSSL=false
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
     username: postgres
     password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
 
 ---
 spring:
@@ -77,7 +51,47 @@ server:
   servlet.context-path: /
 
 codigoalvo:
-  security.enable-https: true
-  allowedOrigin: https://codigoalvo-lab-angular.herokuapp.com
+  security:
+    enable-https: true
+    allowedOrigin: https://codigoalvo-lab-angular.herokuapp.com
+
+---
+spring:
+  profiles: dev-h2-mem
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:lab
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+
+---
+spring:
+  profiles: dev-h2-mem-tcp   #Precisa estar rodando o H2 como serviço TCP
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:tcp://localhost:9095/mem:lab
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+
+---
+spring:
+  profiles: dev-h2-file   #Precisa estar rodando o H2 como serviço TCP
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost:9095/file:~/lab.h2;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1;
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
 
 ---

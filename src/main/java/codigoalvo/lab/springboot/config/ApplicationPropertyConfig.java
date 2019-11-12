@@ -1,14 +1,22 @@
 package codigoalvo.lab.springboot.config;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.FileReader;
 
+@Setter
+@Getter
 @Slf4j
-@ConfigurationProperties("codigoalvo")
+@Configuration
+@EnableConfigurationProperties
+@ConfigurationProperties(prefix = "codigoalvo")
 public class ApplicationPropertyConfig {
 
     public ApplicationPropertyConfig() {
@@ -43,33 +51,30 @@ public class ApplicationPropertyConfig {
 
     //-----------------------------------------------------------------------------------
 
-
     private final Security security = new Security();
 
-    public Security getSecurity() {
-        return security;
-    }
-
-    private String allowedOrigin = "";
-
-    public String getAllowedOrigin() {
-        return allowedOrigin;
-    }
-
-    public void setAllowedOrigin(String allowedOrigin) {
-        this.allowedOrigin = allowedOrigin;
-    }
-
+    @Setter
+    @Getter
     public static class Security {
         private boolean enableHttps;
+        private String allowedOrigin = "";
 
-        public boolean isEnableHttps() {
-            return enableHttps;
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder("{ ");
+            sb.append("enableHttps: ").append(enableHttps).append(", ");
+            sb.append("allowedOrigin: '").append(allowedOrigin.toString()).append("'");
+            sb.append(" }");
+            return sb.toString();
         }
+    }
 
-        public void setEnableHttps(boolean enableHttps) {
-            this.enableHttps = enableHttps;
-        }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("{ ");
+        sb.append("security: ").append(security.toString());
+        sb.append(" }");
+        return sb.toString();
     }
 
 }

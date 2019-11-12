@@ -16,7 +16,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NjkyOTQsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjYyNmY1YjI5LTdmZTYtNDI3MC1iOTc2LTRiZmQwZTViZmEwNSIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.fFSvZdZTPQRa-nrlP1-hwSOzMeO85UmC4mfpZKm5kkI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBkb21haW4uY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTczNTcyNDQxLCJhdXRob3JpdGllcyI6WyJVU1VBUklPX0FMVEVSQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJDQVRFR09SSUFfQUxURVJBUiJdLCJqdGkiOiIxOGVjMjZkNC03NzlhLTRkNjgtYTAwNS0yY2EyZWU2OWYxZTMiLCJjbGllbnRfaWQiOiJhbmd1bGFyIn0.u1Gvi42MNIz_ugOCe5I7-1PS614nihouHnUwL0J33O4",
 									"type": "string"
 								}
 							]
@@ -24,12 +24,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/categoria",
+							"raw": "{{hostname}}{{port}}{{context}}/categorias",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"categoria"
+								"categorias"
 							]
 						}
 					},
@@ -51,12 +51,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/categoria/2",
+							"raw": "{{hostname}}{{port}}{{context}}/categorias/2",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"categoria",
+								"categorias",
 								"2"
 							]
 						}
@@ -69,12 +69,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/categoria/6",
+							"raw": "{{hostname}}{{port}}{{context}}/categorias/6",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"categoria",
+								"categorias",
 								"6"
 							]
 						}
@@ -107,12 +107,12 @@
 							"raw": "{\n    \"nome\": \"Tarifas\"\n}"
 						},
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/categoria",
+							"raw": "{{hostname}}{{port}}{{context}}/categorias",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"categoria"
+								"categorias"
 							]
 						}
 					},
@@ -134,12 +134,12 @@
 							"raw": "{\n    \"nome\": \"Diversos\"\n}"
 						},
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/categoria/15",
+							"raw": "{{hostname}}{{port}}{{context}}/categorias/15",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"categoria",
+								"categorias",
 								"15"
 							]
 						}
@@ -159,7 +159,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NjkyOTQsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjYyNmY1YjI5LTdmZTYtNDI3MC1iOTc2LTRiZmQwZTViZmEwNSIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.fFSvZdZTPQRa-nrlP1-hwSOzMeO85UmC4mfpZKm5kkI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBkb21haW4uY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5vbWUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTYzOTA0NzY3LCJhdXRob3JpdGllcyI6WyJVU1VBUklPX0FMVEVSQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJDQVRFR09SSUFfQUxURVJBUiJdLCJqdGkiOiI4ZGMzM2RlOS0zOGNiLTQ3OWEtOGYwOS05MDkxZGQ1ZjVmZjkiLCJjbGllbnRfaWQiOiJhbmd1bGFyIn0.ArlNKPfgNLkEGAISTu_8Tj5raMhK6JN6jYhHGdgiDfM",
 									"type": "string"
 								}
 							]
@@ -167,12 +167,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/usuario",
+							"raw": "{{hostname}}{{port}}{{context}}/usuarios",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"usuario"
+								"usuarios"
 							]
 						}
 					},
@@ -186,7 +186,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "8d480211-3644-435f-be99-2f0cf9052bce",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM1NDY4MjgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIlVTVUFSSU9fQ09OU1VMVEFSIiwiQ0FURUdPUklBX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjJjNDU5YjBlLWZiZGUtNDdjMi05NDA0LTU0MTA3YmNjMDIwNiIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.b-89M_4ewPPMNwUf6fmT44OiWK6DyUZkKziTS9oHse0",
 									"type": "string"
 								}
 							]
@@ -194,12 +194,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/usuario/2",
+							"raw": "{{hostname}}{{port}}{{context}}/usuarios/2",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"usuario",
+								"usuarios",
 								"2"
 							]
 						}
@@ -209,15 +209,25 @@
 				{
 					"name": "usuario-remover",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM1NDY4MjgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIlVTVUFSSU9fQ09OU1VMVEFSIiwiQ0FURUdPUklBX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjJjNDU5YjBlLWZiZGUtNDdjMi05NDA0LTU0MTA3YmNjMDIwNiIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.b-89M_4ewPPMNwUf6fmT44OiWK6DyUZkKziTS9oHse0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/usuario/3",
+							"raw": "{{hostname}}{{port}}{{context}}/usuarios/3",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"usuario",
+								"usuarios",
 								"3"
 							]
 						}
@@ -232,7 +242,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM0NTgyOTYsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6Ijk1MmNjY2E4LWI1OTctNDAzMS1iMDAzLTU1NWFhYjIwY2RiOCIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.a4U7UTrZIZlujq6d0qg8BR_ySCnEUPSVgwRT83kk0sk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM1NDY4MjgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIlVTVUFSSU9fQ09OU1VMVEFSIiwiQ0FURUdPUklBX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjJjNDU5YjBlLWZiZGUtNDdjMi05NDA0LTU0MTA3YmNjMDIwNiIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.b-89M_4ewPPMNwUf6fmT44OiWK6DyUZkKziTS9oHse0",
 									"type": "string"
 								}
 							]
@@ -250,12 +260,12 @@
 							"raw": "{\n\t\"nome\": \"Fulano\",\n    \"email\": \"fulano@email.com\",\n    \"password\": \"fulano123\",\n    \"telefone\": \"+55 (11) 9.8888-7777\"\n}"
 						},
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/usuario",
+							"raw": "{{hostname}}{{port}}{{context}}/usuarios",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"usuario"
+								"usuarios"
 							]
 						}
 					},
@@ -269,7 +279,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjM1NDY4MjgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIlVTVUFSSU9fQ09OU1VMVEFSIiwiQ0FURUdPUklBX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6IjJjNDU5YjBlLWZiZGUtNDdjMi05NDA0LTU0MTA3YmNjMDIwNiIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.b-89M_4ewPPMNwUf6fmT44OiWK6DyUZkKziTS9oHse0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBkb21pbmlvLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTU2Mzg5NDM5NywiYXV0aG9yaXRpZXMiOlsiVVNVQVJJT19BTFRFUkFSIiwiVVNVQVJJT19DT05TVUxUQVIiLCJDQVRFR09SSUFfQ09OU1VMVEFSIiwiQ0FURUdPUklBX0FMVEVSQVIiXSwianRpIjoiM2U5ZWJiOWItNDljZC00ZWRjLWJlNTMtYzhlNmY1NWEzZGIxIiwiY2xpZW50X2lkIjoiYW5ndWxhciJ9.pzgJcXwzZbWr3cVOq1EVeRopR2ts7zJ0l9E1dkiHhRM",
 									"type": "string"
 								}
 							]
@@ -284,15 +294,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Super Admin\",\n    \"telefone\": \"6666-9999\"\n}"
+							"raw": "{\n    \"name\": \"Gerente\",\n    \"telefone\": \"6666-9999\"\n}"
 						},
 						"url": {
-							"raw": "{{hostname}}{{port}}{{context}}/usuario/1",
+							"raw": "{{hostname}}{{port}}{{context}}/usuarios/1",
 							"host": [
 								"{{hostname}}{{port}}{{context}}"
 							],
 							"path": [
-								"usuario",
+								"usuarios",
 								"1"
 							]
 						}
@@ -339,7 +349,7 @@
 						},
 						{
 							"key": "username",
-							"value": "admin@email.com",
+							"value": "admin@domain.com",
 							"type": "text"
 						},
 						{
@@ -458,7 +468,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjMyNzkxNTgsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTVUFSSU9fQUxURVJBUiIsIkNBVEVHT1JJQV9DT05TVUxUQVIiLCJVU1VBUklPX0NPTlNVTFRBUiIsIkNBVEVHT1JJQV9BTFRFUkFSIl0sImp0aSI6ImE0MjJkYzc2LWFkOWMtNDc0OC04Zjg2LTFiNzhkN2Y5M2MwNSIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.62yhegshE_sEM_1f0tCO3TBGXtQISKZEbZJxzZHxloA",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBkb21pbmlvLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiR2VyZW50ZSIsImV4cCI6MTU2Mzg5ODU0NSwiYXV0aG9yaXRpZXMiOlsiVVNVQVJJT19BTFRFUkFSIiwiVVNVQVJJT19DT05TVUxUQVIiLCJDQVRFR09SSUFfQ09OU1VMVEFSIiwiQ0FURUdPUklBX0FMVEVSQVIiXSwianRpIjoiY2VlNDViMDAtMjg1OC00MDE2LWE2Y2QtYTU3NDAzODZiYTkwIiwiY2xpZW50X2lkIjoiYW5ndWxhciJ9.0e_n2rV4Y5hvIFsj67LZ47KhdiZ1fr1L1j7WTGqJ2c0",
 							"type": "string"
 						}
 					]
@@ -472,6 +482,62 @@
 					],
 					"path": [
 						"revoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth2 refresh token Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "@nGuL4r",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "angular",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "4f6e66df-74eb-4932-9faa-67ab4dba0ace",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}{{port}}{{context}}/oauth/token",
+					"host": [
+						"{{hostname}}{{port}}{{context}}"
+					],
+					"path": [
+						"oauth",
+						"token"
 					]
 				}
 			},

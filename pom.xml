@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>codigoalvo</groupId>
 	<artifactId>lab-springboot</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>lab-springboot</name>
 	<description>Projeto de Estudo e Testes com Spring Boot</description>
 
